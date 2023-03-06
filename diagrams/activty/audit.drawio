@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="1xSZQ-T79O-_CSuy3GbJ" name="Page-1">
-        <mxGraphModel dx="1151" dy="784" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+        <mxGraphModel dx="1072" dy="603" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -137,30 +137,28 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="41" value="" style="edgeStyle=none;html=1;" parent="1" source="36" target="40" edge="1">
+                <mxCell id="67" style="edgeStyle=none;html=1;" edge="1" parent="1" source="36" target="66">
                     <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="42" value="Audit terminer" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="41" vertex="1" connectable="0">
-                    <mxGeometry x="-0.3742" relative="1" as="geometry">
-                        <mxPoint y="24" as="offset"/>
-                    </mxGeometry>
                 </mxCell>
                 <mxCell id="36" value="" style="rhombus;whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
                     <mxGeometry x="525" y="1625" width="80" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="53" style="edgeStyle=none;html=1;" parent="1" source="40" target="43" edge="1">
+                <mxCell id="53" style="edgeStyle=none;html=1;startArrow=none;" parent="1" source="61" target="43" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="64" style="edgeStyle=none;html=1;entryX=0.499;entryY=0.05;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="40" target="63">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="40" value="Synchroniser la campagne&amp;nbsp;" style="whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
-                    <mxGeometry x="505" y="1835" width="120" height="60" as="geometry"/>
+                    <mxGeometry x="505" y="1930" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="43" value="" style="ellipse;html=1;shape=endState;" parent="1" vertex="1">
-                    <mxGeometry x="550" y="1970" width="30" height="30" as="geometry"/>
+                    <mxGeometry x="550" y="2290" width="30" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="51" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="49" target="23" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="52" value="Sélection du matériel à auditer" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="51" vertex="1" connectable="0">
+                <mxCell id="52" value="Sélection la pièce à auditer" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="51" vertex="1" connectable="0">
                     <mxGeometry x="-0.3144" relative="1" as="geometry">
                         <mxPoint as="offset"/>
                     </mxGeometry>
@@ -191,6 +189,34 @@
                 </mxCell>
                 <mxCell id="60" value="Afficher la liste des pièces du matériel sélectionner&amp;nbsp;" style="whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
                     <mxGeometry x="505" y="870" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="61" value="Clôturer la campagne&amp;nbsp;" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="505" y="2160" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="65" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="63" target="61">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="69" style="edgeStyle=none;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="63" target="66">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="790" y="2070"/>
+                            <mxPoint x="790" y="1820"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="70" value="Modifier la campagne ou si synchro échoue" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="69">
+                    <mxGeometry x="0.0626" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="63" value="" style="rhombus;whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="525" y="2030" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="68" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="66" target="40">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="66" value="Audit terminée" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="505" y="1790" width="120" height="60" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>

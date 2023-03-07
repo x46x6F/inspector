@@ -17,62 +17,49 @@
 ## **MERISE**
 
 ### *MCD :*
-> Made with MoCoDo
+> Made with ***[MoCoDo](https://www.mocodo.net/)***
 
 > **Pensez à écrire pourquoi on représente les données de cette manière !!**  
 
 **Demander indicateurs pour les stats: 4. D-Analyse de résultats, la forme: décimal, voir calcul** 
- 
-**Access Control List (ACL)**  
+
 **A voir: Gate & policies, spatie**
 
 ```
-:
-:
-:
-:
-:
 constructors: name
+belong0, 1N constructors, 11 modeles
+compatible, 1N modeles, 1N modeles
+types: name, domain
 :
 
-:
-:
-:
 :
 characterize0, 11 pieces, 1N modeles
-belong0, 1N constructors, 11 modeles
-types: name, domain
+modeles: name, date_mm, status
+have0, 1N types, 11 modeles
+:
 
-associate, 00 acl, 00 roles
-roles: name
 :
 pieces: creation_year, has_electro, status
 characterize1, 11 materials, 1N modeles
-modeles: name, date_mm, status
-have0, 1N types, 11 modeles
-
-acl: à_définir
+roles: name
 have1, 0N roles, 11 users
+
 :
 constitute, 11 pieces, 1N materials
 materials: creation_year, status
-compatible, 1N modeles, 1N modeles
-:
-
-:
-users: login, password
 participate, 0N users, 11 campaigns
-sites: adress
-belong, 11 materials, 1N sites
-:
-:
+users: login, password
 
 :
-create, 0N users, 11 campaigns
+:
+belong, 11 materials, 1N sites
 campaigns: name, start_date, end_date, status
+create, 0N users, 11 campaigns
+
+:
+:
+sites: adress
 audit, 1N sites, 11 campaigns
-:
-:
 :
 ```
 
@@ -80,8 +67,98 @@ audit, 1N sites, 11 campaigns
 
 
 ### *MLD :*
-> Made with QuickDatabaseDiagrams
+> Made with ***[DBDiagram](https://dbdiagram.io/d/)***
 
 ```
-MLD HERE
+Table 1nspect0r.constructors {
+  id int [pk]
+  name varchar(100) unique
+}
+
+// types.domain qui determine si c'est un modele de piece ou de materiel
+Table 1nspect0r.modeles {
+  id int [pk]
+  name varchar(100)
+  date_mm date
+  status varchar(30)
+  constructor_id int
+  type_id int
+}
+
+Ref: 1nspect0r.modeles.constructor_id < 1nspect0r.constructors.id
+Ref: 1nspect0r.modeles.type_id < 1nspect0r.types.id
+
+Table 1nspect0r.compatibles {
+  modele_id int [pk]
+  compatible_modele_id int [pk]
+}
+
+Ref: 1nspect0r.compatibles.modele_id > 1nspect0r.modeles.id
+Ref: 1nspect0r.compatibles.compatible_modele_id > 1nspect0r.modeles.id
+
+// domain = material ou piece
+Table 1nspect0r.types {
+  id int [pk]
+  name varchar(100)
+  domain varchar(30)
+}
+
+Table 1nspect0r.pieces {
+  id int [pk]
+  creation_year date 
+  has_electro bool
+  status bool
+  material_id int
+  modele_id int
+}
+
+Ref: 1nspect0r.modeles.id < 1nspect0r.pieces.modele_id
+Ref: 1nspect0r.materials.id < 1nspect0r.pieces.material_id
+
+Table 1nspect0r.materials {
+  id int [pk]
+  creation_year date
+  status bool
+  site_id int
+  modele_id int
+}
+
+Ref: 1nspect0r.modeles.id < 1nspect0r.materials.modele_id
+Ref: 1nspect0r.sites.id < 1nspect0r.materials.site_id
+
+Table 1nspect0r.users {
+  id int [pk]
+  login varchar(50)
+  password varchar(255)
+  role_id int
+}
+
+Ref: 1nspect0r.roles.id < 1nspect0r.users.role_id
+
+Table 1nspect0r.roles {
+  id int [pk]
+  name varchar(30)
+}
+
+Table 1nspect0r.campaigns {
+  id int [pk]
+  name varchar(150)
+  start_date date
+  end_date date
+  status varchar(30)
+  site_id int
+  creator_id int
+  participant_id int
+}
+
+Ref: 1nspect0r.sites.id < 1nspect0r.campaigns.site_id
+Ref: 1nspect0r.users.id < 1nspect0r.campaigns.creator_id
+Ref: 1nspect0r.users.id < 1nspect0r.campaigns.participant_id
+
+Table 1nspect0r.sites {
+  id int [pk]
+  adress varchar(200)
+}
 ```
+
+![MCD 1nspect0r](MERISE/1nspect0rMLD.png)

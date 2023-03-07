@@ -19,9 +19,9 @@
 ### *MCD :*
 > Made with ***[MoCoDo](https://www.mocodo.net/)***
 
-> **Pensez à écrire pourquoi on représente les données de cette manière !!**  
+#### *Explication du MCD :*
 
-**Demander indicateurs pour les stats: 4. D-Analyse de résultats, la forme: décimal, voir calcul** 
+  
 
 **A voir: Gate & policies, spatie**
 
@@ -71,7 +71,7 @@ audit, 1N sites, 11 campaigns
 
 ```
 Table 1nspect0r.constructors {
-  id int [pk]
+  id int [pk, increment] 
   name varchar(100) unique
 }
 
@@ -80,7 +80,7 @@ Table 1nspect0r.modeles {
   id int [pk]
   name varchar(100)
   date_mm date
-  status varchar(30)
+  status bool
   constructor_id int
   type_id int
 }
@@ -107,7 +107,6 @@ Table 1nspect0r.pieces {
   id int [pk]
   creation_year date 
   has_electro bool
-  status bool
   material_id int
   modele_id int
 }
@@ -118,7 +117,6 @@ Ref: 1nspect0r.materials.id < 1nspect0r.pieces.material_id
 Table 1nspect0r.materials {
   id int [pk]
   creation_year date
-  status bool
   site_id int
   modele_id int
 }
@@ -159,6 +157,7 @@ Table 1nspect0r.sites {
   id int [pk]
   adress varchar(200)
 }
+
 ```
 
 ![MCD 1nspect0r](MERISE/1nspect0rMLD.png)

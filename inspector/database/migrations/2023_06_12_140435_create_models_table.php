@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('models', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('varchar');
+            $table->string('status');
             $table->foreignId('constructor_id')->reference('id')->on('constructors');
             $table->foreignId('type_id')->reference('id')->on('types');
             $table->timestamps();

@@ -8,3 +8,12 @@
   --main-secondary: #FF691A;
   --main-lighten: #FFA474;
 }
+
+#layout {
+  display: flex;
+}
+
+#page {
+  overflow-y: auto;
+  max-height: 100vh;
+}

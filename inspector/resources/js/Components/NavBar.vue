@@ -5,16 +5,18 @@
 <template>
   <nav>
     <div class="nav-top">
-      <a href="">
-        <img src="../../assets/img/logo_mini.png" alt="">
-      </a>
+      <div class="logo-mini">
+        <a href="/">
+          <img src="../../assets/img/logo_mini.png" alt="mini_logo">
+        </a>
+      </div>
       <span></span>
     </div>
     <div class="nav">
-      <a href="#">Campagnes</a>
-      <a href="#">Référentiel pièces</a>
-      <a href="#">Référentiel matériels</a>
-      <a href="#">Qualité & sécurité</a>
+      <a id="campaign" href="campaigns">Campagnes</a>
+      <a id="piece" href="pieces">Référentiel pièces</a>
+      <a id="material" href="#">Référentiel matériels</a>
+      <a id="dash" href="#">Qualité & sécurité</a>
     </div>
       <div class="nav-bottom">
       <span></span>
@@ -24,12 +26,15 @@
 </template>
 
 <style scoped>
+
+/* HTML tag */
 nav {
+  /* position: fixed; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 10px;
-  width: 20%;
+  min-width: 300px;
   height: 100vh;
   background-color: var(--main-primary);
   color: white;
@@ -37,7 +42,6 @@ nav {
 }
 
 img {
-  padding: 3rem;
   margin: 0 auto;
 }
 
@@ -49,15 +53,21 @@ span {
   margin: 0 auto;
 }
 
-.logout {
-  color: var(--main-secondary);
-  bottom: 0;
-}
 
 a:hover {
   color: var(--main-lighten);
 }
 
+
+
+/* CLASS */
+.logo-mini {
+  padding: 2rem;
+}
+.logout {
+  color: var(--main-secondary);
+  bottom: 0;
+}
 .nav {
   height: 100%;
   padding-left: 2rem;
@@ -66,7 +76,6 @@ a:hover {
   flex-direction: column;
   gap: 2rem;
 }
-
 .nav-bottom {
   margin-bottom: 4rem;
 }

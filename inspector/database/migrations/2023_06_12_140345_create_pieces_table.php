@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('status');
             $table->foreignId('material_id')->reference('id')->on('materials');
             $table->foreignId('model_id')->reference('id')->on('models');
-            $table->timestamps();
         });
     }
 

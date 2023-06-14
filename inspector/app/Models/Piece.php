@@ -11,13 +11,6 @@ class Piece extends Model
 {
     use HasFactory;
 
-       /**
-     * Put the timestamps at false
-     *
-     * @var boolean
-     */
-    public $timestamps = false;
-
     /**
      * Get model from a piece
      * 

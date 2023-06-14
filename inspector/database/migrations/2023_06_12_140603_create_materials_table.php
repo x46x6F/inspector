@@ -16,7 +16,6 @@ return new class extends Migration
             $table->boolean('has_electro');
             $table->integer('creation_year');
             $table->foreignId('site_id')->reference('id')->on('sites');
-            $table->timestamps();
         });
     }
 

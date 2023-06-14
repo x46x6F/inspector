@@ -9,15 +9,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Material extends Model
 {
-    use HasFactory;
-
-    /**
-     * Put the timestamps at false
-     *
-     * @var boolean
-     */
-    public $timestamps = false;
-
 
     /**
      * Get material in a site

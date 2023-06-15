@@ -14,7 +14,11 @@ return new class extends Migration
         Schema::create('sites', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->integer('number');
+            $table->string('adress_comp');
             $table->string('adress');
+            $table->integer('zip_code');
+            $table->string('city');
         });
     }
 

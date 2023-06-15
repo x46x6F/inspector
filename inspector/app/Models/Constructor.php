@@ -18,8 +18,8 @@ class Constructor extends Model
      * @return HasMany
      */
 
-     public function model(): HasMany
-     {
-         return $this->hasMany(Model::class);
-     }
+    public function models(): HasMany
+    {
+        return $this->hasMany(Model::class);
+    }
 }

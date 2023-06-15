@@ -15,7 +15,7 @@ class Material extends Model
      * 
      * @return BelongsTo
      */
-    public function site(): BelongsTo
+    public function sites(): BelongsTo
     {
         return $this->belongsTo(Site::class);
     }
@@ -25,7 +25,7 @@ class Material extends Model
      * 
      * @return BelongsTo
      */
-    public function model(): BelongsTo
+    public function models(): BelongsTo
     {
         return $this->belongsTo(Model::class);
     }
@@ -35,7 +35,7 @@ class Material extends Model
      *
      * @return HasMany 
      */
-    public function piece(): HasMany
+    public function pieces(): HasMany
     {
         return $this->hasMany(Piece::class);
     }

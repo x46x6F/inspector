@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->boolean('has_electro');
             $table->integer('creation_year');
+            $table->boolean('status');
             $table->foreignId('site_id')->reference('id')->on('sites');
         });
     }

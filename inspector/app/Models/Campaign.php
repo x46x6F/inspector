@@ -18,32 +18,32 @@ class Campaign extends Model
      * @return BelongsTo
      */
 
-     public function user(): BelongsTo
-     {
-         return $this->belongsTo(User::class);
-     }
+    public function users(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 
-     /**
-      * 
-      * Get the site of the campaign
-      *
-      * @return BelongsTo
-      */
+    /**
+     * 
+     * Get the site of the campaign
+     *
+     * @return BelongsTo
+     */
 
-      public function site(): BelongsTo 
-      {
+    public function sites(): BelongsTo
+    {
         return $this->belongsTo(Site::class);
-      }
+    }
 
-      /**
-       * 
-       * Get the pieces from the campaign
-       * 
-       * @return BelongsToMany
-       */
+    /**
+     * 
+     * Get the pieces from the campaign
+     * 
+     * @return BelongsToMany
+     */
 
-       public function piece(): BelongsToMany 
-       {
+    public function pieces(): BelongsToMany
+    {
         return $this->belongsToMany(Piece::class, 'audit', 'piece_id', 'campaign_id');
-       }
+    }
 }

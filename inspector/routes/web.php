@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PieceController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -37,9 +38,11 @@ Route::get('/materials', function () {
     return Inertia::render('Materials');
 })->name('materials.index');
 
-Route::get('/pieces', function () {
-    return Inertia::render('Pieces');
-})->name('pieces.index');
+Route::resource('/pieces', PieceController::class);
+
+// Route::get('/pieces', function () {
+//     return Inertia::render('Pieces');
+// })->name('pieces.index');
 
 Route::get('/dash', function () {
     return Inertia::render('Dash');

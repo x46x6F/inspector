@@ -18,7 +18,7 @@ return new class extends Migration
             $table->boolean('audit');
             $table->boolean('presence');
             $table->boolean('functional');
-            $table->string('month');
+            $table->integer('month');
             $table->boolean('usury');
             $table->boolean('change');
             $table->boolean('complement');

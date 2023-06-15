@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::create('pieces', function (Blueprint $table) {
             $table->id();
-            $table->integer('creation_year');
-            $table->boolean('has_electro');
-            $table->string('status');
             $table->foreignId('material_id')->reference('id')->on('materials');
             $table->foreignId('model_id')->reference('id')->on('models');
+            $table->string('name');
+            $table->integer('creation_year');
+            $table->boolean('has_electro');
+            $table->boolean('status');
         });
     }
 

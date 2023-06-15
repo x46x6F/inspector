@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Model extends Model
+class Models extends Model
 {
     use HasFactory;
 
@@ -17,7 +17,7 @@ class Model extends Model
      * 
      * @return BelongsTo
      */
-    public function constructor(): BelongsTo
+    public function constructors(): BelongsTo
     {
         return $this->belongsTo(Constructor::class);
     }
@@ -27,7 +27,7 @@ class Model extends Model
      *
      * @return BelongsTo
      */
-    public function type(): BelongsTo
+    public function types(): BelongsTo
     {
         return $this->belongsTo(Type::class);
     }
@@ -37,7 +37,7 @@ class Model extends Model
      * 
      * @return HasMany
      */
-    public function material(): HasMany
+    public function materials(): HasMany
     {
         return $this->hasMany(Material::class);
     }
@@ -47,7 +47,7 @@ class Model extends Model
      * 
      * @return HasMany
      */
-    public function piece(): HasMany
+    public function pieces(): HasMany
     {
         return $this->hasMany(Piece::class);
     }
@@ -59,7 +59,7 @@ class Model extends Model
      * 
      * @return BelongsToMany
      */
-    public function compatible(): BelongsToMany
+    public function compatibles(): BelongsToMany
     {
         return $this->belongsToMany(Model::class, 'compatible', 'model_id', 'model_id');
     }

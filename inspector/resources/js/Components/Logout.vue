@@ -8,7 +8,7 @@ import { router } from '@inertiajs/vue3';
 
 <style scoped>
 img {
-  height: 60px;
+  height: 50px;
   cursor: pointer;
 }
 </style>

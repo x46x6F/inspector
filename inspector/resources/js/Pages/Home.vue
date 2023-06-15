@@ -49,6 +49,7 @@ button {
   height: 40%;
   width: 40%;
   margin: 0 1.2rem;
+  font-size: 1.3rem;
 }
 span {
   color: var(--main-secondary);
@@ -72,7 +73,7 @@ span {
 }
 .nav {
   width: 100vw;
-  height: 70vh;
+  height: 75vh;
   display: flex;
   align-items: center;
   justify-content: center;

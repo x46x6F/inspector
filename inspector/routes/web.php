@@ -27,19 +27,23 @@ Route::get('/', function () {
 
 Route::get('/home', function () {
     return Inertia::render('Home');
-});
+})->name('home.index');
+
 Route::get('/campaigns', function () {
     return Inertia::render('Campaigns');
-});
-Route::get('/pieces', function () {
-    return Inertia::render('Pieces');
-});
+})->name('campaigns.index');
+
 Route::get('/materials', function () {
     return Inertia::render('Materials');
-});
+})->name('materials.index');
+
 Route::get('/pieces', function () {
     return Inertia::render('Pieces');
-});
+})->name('pieces.index');
+
+Route::get('/dash', function () {
+    return Inertia::render('Dash');
+})->name('dash.index');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

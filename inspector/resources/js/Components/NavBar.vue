@@ -1,22 +1,22 @@
 <script setup>
-
+import { Link } from '@inertiajs/vue3';
 </script>
 
 <template>
   <nav>
     <div class="nav-top">
       <div class="logo-mini">
-        <a href="/">
+        <a href="/home">
           <img src="../../assets/img/logo_mini.png" alt="mini_logo">
         </a>
       </div>
       <span></span>
     </div>
     <div class="nav">
-      <a id="campaign" href="campaigns">Campagnes</a>
-      <a id="piece" href="pieces">Référentiel pièces</a>
-      <a id="material" href="#">Référentiel matériels</a>
-      <a id="dash" href="#">Qualité & sécurité</a>
+      <Link href="/campaigns" :class="{ 'active': $page.url === '/campaigns' }">Campagnes</Link>
+      <Link href="/pieces" :class="{ 'active': $page.url === '/pieces' }">Référentiel pièces</Link>
+      <Link href="/materials" :class="{ 'active': $page.url === '/materials' }">Référentiel matériels</Link>
+      <Link href="/board" :class="{ 'active': $page.url === '/bord' }">Qualité & sécurité</Link>
     </div>
       <div class="nav-bottom">
       <span></span>

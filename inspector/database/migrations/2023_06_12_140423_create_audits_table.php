@@ -23,7 +23,6 @@ return new class extends Migration
             $table->boolean('change');
             $table->boolean('complement');
             $table->boolean('recommended');
-            $table->timestamps();
         });
     }
 

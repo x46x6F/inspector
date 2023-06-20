@@ -16,7 +16,7 @@ class Type extends Model
      * 
      * @return HasMany
      */
-    public function model(): HasMany
+    public function models(): HasMany
     {
         return $this->hasMany(Model::class);
     }

@@ -16,7 +16,7 @@ class Site extends Model
      * 
      * @return HasMany
      */
-    public function material(): HasMany
+    public function materials(): HasMany
     {
         return $this->hasMany(Material::class);
     }
@@ -27,7 +27,7 @@ class Site extends Model
      * 
      * @return HasMany
      */
-    public function campaign(): HasMany
+    public function campaigns(): HasMany
     {
         return $this->hasMany(Campaign::class);
     }

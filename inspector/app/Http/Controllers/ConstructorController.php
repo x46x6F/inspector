@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Constructor;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class ConstructorController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): \Inertia\Response
     {
-        //
+        $constructor = Constructor::get();
+        return Inertia::render('Constructor/Index', ['constructor' => $constructor]);  
     }
 
     /**
@@ -33,9 +36,9 @@ class ConstructorController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Constructor $constructor): \Inertia\Response
     {
-        //
+        return Inertia::render('Constructor/Show', ['constructor' => $constructor]);
     }
 
     /**

@@ -11,9 +11,10 @@ class PieceController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): \Inertia\Response
     {
-        return Inertia::render('Pieces', ['pieces' => Piece::all()]);
+        $pieces = Piece::with(['user', 'materials', 'campaigns'])->get();
+        return Inertia::render('Piece/Index', ['pieces' => $pieces]); 
     }
 
     /**
@@ -35,9 +36,9 @@ class PieceController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Piece $pieces): \Inertia\Response
     {
-        //
+        return Inertia::render('Piece/Show', ['pieces' => $pieces]);
     }
 
     /**

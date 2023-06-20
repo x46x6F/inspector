@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Campaign;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class CampaignController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index() : \Inertia\Response
     {
-        //
+        $campaigns = Campaign::with(['user', 'sites', 'pieces'])->get();
+        return Inertia::render('Campaign/Index', ['campaigns' => $campaigns]);  
     }
 
     /**
@@ -33,9 +36,9 @@ class CampaignController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Campaign $campaigns) : \Inertia\Response
     {
-        //
+        return Inertia::render('Campaign/Show', ['campaigns' => $campaigns]);
     }
 
     /**

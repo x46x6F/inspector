@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ModelController;
 use App\Http\Controllers\PieceController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
@@ -57,5 +58,15 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::resource('campaign', CampaignController::class);
+Route::resource('constructor', ConstructorController::class);
+Route::resource('material', MaterialController::class);
+Route::resource('model', ModelController::class);
+Route::resource('piece', PieceController::class);
+Route::resource('role', RoleController::class);
+Route::resource('site', SiteController::class);
+Route::resource('type', TypeController::class);
+Route::resource('audit', AuditController::class);
 
 require __DIR__.'/auth.php';

@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class ModelController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): \Inertia\Response
     {
-        //
+        $model = Model::with(['constructors', 'types', 'materials', 'pieces', 'compatibles'])->get();
+        return Inertia::render('Model/Index', ['model' => $model]); 
     }
 
     /**
@@ -33,9 +36,9 @@ class ModelController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Model $model): \Inertia\Response
     {
-        //
+        return Inertia::render('Model/Show', ['model' => $model]);
     }
 
     /**

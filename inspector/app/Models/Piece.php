@@ -18,7 +18,7 @@ class Piece extends Model
      * 
      * @return BelongsTo
      */
-    public function model(): BelongsTo
+    public function models(): BelongsTo
     {
         return $this->belongsTo(Piece::class);
     }
@@ -28,7 +28,7 @@ class Piece extends Model
      * 
      * @return BelongsTo
      */
-    public function material(): BelongsTo
+    public function materials(): BelongsTo
     {
         return $this->belongsTo(Material::class);
     }
@@ -38,7 +38,7 @@ class Piece extends Model
      * 
      * @return BelongsToMany
      */
-    public function campaign(): BelongsToMany
+    public function campaigns(): BelongsToMany
     {
         return $this->belongsToMany(Campaign::class, 'audit', 'model_id', 'model_id2');
     }

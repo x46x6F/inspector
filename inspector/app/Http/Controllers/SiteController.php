@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Site;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class SiteController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): \Inertia\Response
     {
-        //
+        $site = Site::with(['materials', 'compaigns'])->get();
+        return Inertia::render('Site/Index', ['site' => $site]);
     }
 
     /**
@@ -33,9 +36,9 @@ class SiteController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Site $site): \Inertia\Response
     {
-        //
+        return Inertia::render('Site/Show', ['site' => $site]);
     }
 
     /**

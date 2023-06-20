@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Type;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class TypeController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): \Inertia\Response
     {
-        //
+        $type = Type::with(['models'])->get();
+        return Inertia::render('Type/Index', ['type' => $type]);
     }
 
     /**
@@ -33,9 +36,9 @@ class TypeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Type $type)
     {
-        //
+        return Inertia::render('Type/Show', ['type' => $type]);
     }
 
     /**

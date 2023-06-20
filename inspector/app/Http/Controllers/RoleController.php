@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class RoleController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): \Inertia\Response
     {
-        //
+        $role = Role::with(['user'])->get();
+        return Inertia::render('Role/Index', ['role' => $role]); 
     }
 
     /**
@@ -33,9 +36,9 @@ class RoleController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Role $role): \Inertia\Response
     {
-        //
+        return Inertia::render('Role/Show', ['role' => $role]);
     }
 
     /**

@@ -1,0 +1,7 @@
+CREATE DATABASE IF NOT EXISTS inspector; 
+
+CREATE USER IF NOT EXISTS 'bob'@'localhost' IDENTIFIED BY 'gadget'; 
+
+GRANT ALL PRIVILEGES ON inspector.* TO bob@localhost;
+FLUSH PRIVILEGES;
+

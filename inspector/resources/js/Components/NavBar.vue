@@ -34,7 +34,7 @@ nav {
   flex-direction: column;
   justify-content: space-between;
   gap: 10px;
-  min-width: 300px;
+  min-width: 20vw;
   height: 100vh;
   background-color: var(--main-primary);
   color: white;

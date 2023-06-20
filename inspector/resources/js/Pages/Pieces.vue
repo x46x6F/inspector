@@ -1,31 +1,45 @@
 <script setup lang="ts">
+import axios from 'axios'
+import DynamicTable from '@/Components/DynamicTable.vue';
+import PrimaryButton from '@/Components/PrimaryButton.vue';
 import Layout from '@/Layouts/Layout.vue';
 import { Head } from '@inertiajs/vue3';
-const props = defineProps(['pieces'])
+import { ref, onMounted } from 'vue';
+
+const pieces = ref([])
+
+const getPieces = () => {
+  axios.get('/api/pieces')
+    .then(res => pieces.value = res.data)
+    .catch(error => console.log(error))
+}
+
+onMounted(() => getPieces())
+
+const head =
+{
+  material_id: 'Matériel',
+  name: 'Nom',
+  creation_year: 'Année',
+  model_id: 'Modèle'
+}
 </script>
 
 <template>
   <Head title="Pieces" />
+
   <Layout>
+
     <h1>Référentiel Pièces</h1>
-    <div id="table">
-    <table>
-      <thead>
-        <tr>
-          <th>Matériel</th>
-          <th>Nom</th>
-          <th>Année</th>
-        </tr>
-      </thead>
-        <tbody>
-          <tr v-for="piece in props.pieces">
-            <td>{{ piece.material_id }}</td>
-            <td>{{ piece.name }}</td>
-            <td>{{ piece.creation_year }}</td>
-          </tr>
-        </tbody>
-      </table>
+
+    <div class="option">
+      <PrimaryButton>
+        Upload
+      </PrimaryButton>
     </div>
+
+    <DynamicTable :headers="head" :data="pieces" />
+
   </Layout>
 </template>
 
@@ -36,34 +50,31 @@ h1 {
   font-size: 2.5rem;
   font-weight: 900;
 }
-#table {
-  width: 100%;
-  height: 40vh;
-  overflow: scroll;
-  overflow-x: hidden;
+
+.option {
+  /* overflow: hidden; */
+  display: flex;
+  margin: 2rem 2rem;
+  padding: 1rem;
+  border: 1px solid var(--main-light);
+  border-radius: 5px;
+  box-shadow: 0px 0px 24px 2px var(--main-light);
+  -webkit-box-shadow: 0px 0px 24px 2px var(--main-light);
+  -moz-box-shadow: 0px 0px 24px 2px var(--main-light);
 }
 
-table {
-  width: 70vw;
-}
-
-tbody {
-  border-collapse: collapse;
-  width: 80vw;
-}
-
-tbody tr:nth-child(even) {
-  background-color: var(--main-light) !important;
-}
-
-th {
+button {
+  width: fit-content;
+  height: 2rem;
   background-color: white;
-  position: sticky;
-  top: 0;
+  border: 2px solid var(--main-primary);
+  color: var(--main-primary);
 }
 
-th,
-td {
-  padding: 5px;
+button:hover {
+  background-color: var(--main-lighten);
+  color: white;
+  border: 2px solid white;
+  outline: solid var(--main-secondary);
 }
 </style>

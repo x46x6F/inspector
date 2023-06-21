@@ -44,7 +44,7 @@ class Campaign extends Model
 
     public function pieces(): BelongsToMany
     {
-        return $this->belongsToMany(Piece::class, 'audit', 'piece_id', 'campaign_id');
+        return $this->belongsToMany(Piece::class, 'audit', 'campaign_id', 'piece_id');
     }
 
     /**
@@ -54,8 +54,8 @@ class Campaign extends Model
      * @return BelongsTo
      */
 
-     public function audits(): BelongsTo
-     {
-         return $this->belongsTo(Audit::class);
-     }
+    public function audits(): BelongsTo
+    {
+        return $this->belongsTo(Audit::class);
+    }
 }

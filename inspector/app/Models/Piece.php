@@ -40,6 +40,6 @@ class Piece extends Model
      */
     public function campaigns(): BelongsToMany
     {
-        return $this->belongsToMany(Campaign::class, 'audit', 'model_id', 'model_id2');
+        return $this->belongsToMany(Campaign::class, 'audit', 'piece_id', 'campaign_id');
     }
 }

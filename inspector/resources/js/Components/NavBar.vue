@@ -13,10 +13,10 @@ import { Link } from '@inertiajs/vue3';
       <span></span>
     </div>
     <div class="nav">
-      <Link href="/campaigns" :class="{ 'active': $page.url === '/campaigns' }">Campagnes</Link>
-      <Link href="/pieces" :class="{ 'active': $page.url === '/pieces' }">Référentiel pièces</Link>
-      <Link href="/materials" :class="{ 'active': $page.url === '/materials' }">Référentiel matériels</Link>
-      <Link href="/board" :class="{ 'active': $page.url === '/bord' }">Qualité & sécurité</Link>
+      <Link href="/campaigns" :class="{ 'active': $page.url.includes('/campaigns') }">Campagnes</Link>
+      <Link href="/pieces" :class="{ 'active': $page.url.includes('/pieces') }">Référentiel pièces</Link>
+      <Link href="/materials" :class="{ 'active': $page.url.includes('/materials') }">Référentiel matériels</Link>
+      <Link href="/dash" :class="{ 'active': $page.url.includes('/dash') }">Qualité & sécurité</Link>
     </div>
       <div class="nav-bottom">
       <span></span>
@@ -29,7 +29,6 @@ import { Link } from '@inertiajs/vue3';
 
 /* HTML tag */
 nav {
-  /* position: fixed; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;

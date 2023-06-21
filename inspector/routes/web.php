@@ -1,8 +1,15 @@
 <?php
 
+use App\Http\Controllers\AuditController;
+use App\Http\Controllers\CampaignController;
+use App\Http\Controllers\ConstructorController;
+use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\ModelController;
 use App\Http\Controllers\PieceController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\SiteController;
+use App\Http\Controllers\TypeController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -19,7 +26,7 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
+    return Inertia::render('Auth/Login', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
@@ -31,19 +38,23 @@ Route::get('/home', function () {
     return Inertia::render('Home');
 })->name('home.index');
 
-Route::get('/campaigns', function () {
-    return Inertia::render('Campaigns');
-})->name('campaigns.index');
+Route::resource('pieces', PieceController::class);
 
-Route::get('/materials', function () {
-    return Inertia::render('Materials');
-})->name('materials.index');
+Route::resource('campaigns', CampaignController::class);
 
-Route::resource('/pieces', PieceController::class);
+Route::resource('constructors', ConstructorController::class);
 
-// Route::get('/pieces', function () {
-//     return Inertia::render('Pieces');
-// })->name('pieces.index');
+Route::resource('materials', MaterialController::class);
+
+Route::resource('models', ModelController::class);
+
+Route::resource('roles', RoleController::class);
+
+Route::resource('sites', SiteController::class);
+
+Route::resource('types', TypeController::class);
+
+Route::resource('audits', AuditController::class);
 
 Route::get('/dash', function () {
     return Inertia::render('Dash');
@@ -58,15 +69,5 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
-Route::resource('campaign', CampaignController::class);
-Route::resource('constructor', ConstructorController::class);
-Route::resource('material', MaterialController::class);
-Route::resource('model', ModelController::class);
-Route::resource('piece', PieceController::class);
-Route::resource('role', RoleController::class);
-Route::resource('site', SiteController::class);
-Route::resource('type', TypeController::class);
-Route::resource('audit', AuditController::class);
 
 require __DIR__.'/auth.php';

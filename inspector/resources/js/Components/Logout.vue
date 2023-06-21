@@ -3,7 +3,7 @@ import { router } from '@inertiajs/vue3';
 </script>
 
 <template>
-  <img @click="router.visit(route('home.index'))" class="logout" src="../../assets/img/logout.png" alt="logout">
+  <img @click="router.visit(route('/home'))" class="logout" src="../../assets/img/logout.png" alt="logout">
 </template>
 
 <style scoped>

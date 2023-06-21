@@ -18,20 +18,20 @@ class Audit extends Model
      * @return HasMany
      */
 
-     public function user(): HasMany
-     {
-         return $this->HasMany(User::class);
-     }
-    
-     /**
+    public function user(): HasMany
+    {
+        return $this->HasMany(User::class);
+    }
+
+    /**
      * 
      * Get the campaign of the edit
      * 
      * @return BelongsTo
      */
 
-     public function campaigns(): BelongsTo
-     {
-         return $this->belongsTo(Campaign::class);
-     }
+    public function campaigns(): BelongsTo
+    {
+        return $this->belongsTo(Campaign::class);
+    }
 }

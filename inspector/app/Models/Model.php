@@ -17,7 +17,7 @@ class Models extends Model
      * 
      * @return BelongsTo
      */
-    public function constructors(): BelongsTo
+    public function constructor(): BelongsTo
     {
         return $this->belongsTo(Constructor::class);
     }
@@ -27,7 +27,7 @@ class Models extends Model
      *
      * @return BelongsTo
      */
-    public function types(): BelongsTo
+    public function type(): BelongsTo
     {
         return $this->belongsTo(Type::class);
     }

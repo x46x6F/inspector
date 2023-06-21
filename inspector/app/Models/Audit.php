@@ -3,11 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Audit extends Model
+
+class Audit extends Pivot
 {
     use HasFactory;
 
@@ -15,12 +16,12 @@ class Audit extends Model
      * 
      * Get the user who created the audit
      * 
-     * @return HasMany
+     * @return BelongsTo
      */
 
-    public function user(): HasMany
+    public function piece(): BelongsTo
     {
-        return $this->HasMany(User::class);
+        return $this->belongsTo(User::class);
     }
 
     /**
@@ -30,7 +31,7 @@ class Audit extends Model
      * @return BelongsTo
      */
 
-    public function campaigns(): BelongsTo
+    public function campaign(): BelongsTo
     {
         return $this->belongsTo(Campaign::class);
     }

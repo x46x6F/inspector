@@ -11,6 +11,7 @@ import { ref, watch } from 'vue';
 
 const props = defineProps<{
   pieces: Array<any>, 
+  role_id: number
 }>()
 
 const head =
@@ -47,12 +48,12 @@ const watcher = (search) => {
 <template>
   <Head title="Pieces" />
 
-  <Layout>
+  <Layout :role_id="props.role_id">
 
     <h1>Référentiel Pièces</h1>
 
     <div class="option">
-      <UploadButton />
+      <UploadButton  v-if="props.role_id === 3"/>
       <SearchBar @write="watcher"/>
     </div>
 

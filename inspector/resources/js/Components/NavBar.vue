@@ -1,5 +1,12 @@
 <script setup>
-import { Link } from '@inertiajs/vue3';
+import { Link, router } from '@inertiajs/vue3';
+
+const props = defineProps({
+  role_id: {
+        type: Number,
+        default: 0,
+    },
+})
 </script>
 
 <template>
@@ -16,11 +23,12 @@ import { Link } from '@inertiajs/vue3';
       <Link href="/campaigns" :class="{ 'active': $page.url.includes('/campaigns') }">Campagnes</Link>
       <Link href="/pieces" :class="{ 'active': $page.url.includes('/pieces') }">Référentiel pièces</Link>
       <Link href="/materials" :class="{ 'active': $page.url.includes('/materials') }">Référentiel matériels</Link>
-      <Link href="/dash" :class="{ 'active': $page.url.includes('/dash') }">Qualité & sécurité</Link>
+      <Link href="/dash" :class="{ 'active': $page.url.includes('/dash') }" v-if="props.role_id === 4">Qualité & sécurité</Link>
+      <Link class="unauthorized" v-if="props.role_id != 4">Qualité & sécurité</Link>
     </div>
       <div class="nav-bottom">
       <span></span>
-      <a class="logout" href="#">Déconnexion</a>
+      <a class="logout" href="#" @click="router.post(route('logout'))">Déconnexion</a>
     </div>
   </nav>
 </template>
@@ -81,5 +89,14 @@ a:hover {
 .logout {
   display: block;
   padding: 1rem 2rem;
+}
+
+.unauthorized{
+  color: gray;
+}
+
+.unauthorized:hover {
+  color: gray;
+  cursor: not-allowed;
 }
 </style>

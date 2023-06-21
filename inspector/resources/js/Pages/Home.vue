@@ -5,14 +5,17 @@ import Layout from '@/Layouts/HomeLayout.vue'
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import { Head, Link, router } from '@inertiajs/vue3';
 
+const props = defineProps<{
+  role_id: number
+}>()
 
 </script>
 
 <template>
   <Head title="Accueil" />
   <header class="header">
-      <ApplicationLogo />
-      <Logout />
+    <ApplicationLogo />
+    <Logout />
   </header>
   <Layout>
     <section class="nav">
@@ -35,7 +38,6 @@ import { Head, Link, router } from '@inertiajs/vue3';
 </template>
 
 <style scoped>
-
 /* HTML tag */
 
 header {
@@ -44,6 +46,7 @@ header {
   justify-content: space-between;
   padding: 0 2rem;
 }
+
 button {
   justify-content: center;
   height: 40%;
@@ -51,6 +54,7 @@ button {
   margin: 0 1.2rem;
   font-size: 1.3rem;
 }
+
 span {
   color: var(--main-secondary);
 }
@@ -63,6 +67,7 @@ span {
   width: 20%;
   padding: 1.5rem;
 }
+
 .btn-home {
   width: 60vw;
   height: 48vh;
@@ -71,6 +76,7 @@ span {
   align-items: center;
   justify-content: center;
 }
+
 .nav {
   width: 100vw;
   height: 75vh;
@@ -78,5 +84,4 @@ span {
   align-items: center;
   justify-content: center;
 }
-
 </style>

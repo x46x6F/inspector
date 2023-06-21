@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Piece;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class PieceController extends Controller
@@ -18,7 +19,8 @@ class PieceController extends Controller
             'pieces' => Piece::query()
                 ->when(Request()->input('search'), function ($query, $search) {
                     $query->where('name', 'like', '%' . $search . '%');
-                })->with(['materials', 'campaigns'])->get()
+                })->with(['materials', 'campaigns'])->get(),
+            'role_id' => Auth::user()->role_id
         ]);
     }
 

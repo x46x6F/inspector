@@ -1,5 +1,5 @@
 <script setup>
-import { Link } from '@inertiajs/vue3';
+import { Link, router } from '@inertiajs/vue3';
 </script>
 
 <template>
@@ -20,7 +20,7 @@ import { Link } from '@inertiajs/vue3';
     </div>
       <div class="nav-bottom">
       <span></span>
-      <a class="logout" href="#">Déconnexion</a>
+      <a class="logout" href="#" @click="router.post(route('logout'))">Déconnexion</a>
     </div>
   </nav>
 </template>

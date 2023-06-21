@@ -11,6 +11,22 @@ class Role extends Model
     use HasFactory;
 
     /**
+     * Put the timestamps at false
+     *
+     * @var boolean
+     */
+    public $timestamps = false;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<string>
+     */
+    protected $fillable = [
+        'name'
+    ];
+
+    /**
      * Get the role of a user
      * 
      * @return HasMany

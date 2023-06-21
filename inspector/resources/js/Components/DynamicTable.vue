@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { router } from '@inertiajs/vue3';
+
 const props = defineProps<{
   headers: Object,
   data: Array<any>
@@ -15,8 +17,8 @@ const props = defineProps<{
       </thead>
       <tbody>
         <tr v-for="item in data" :key="item">
-          <!-- <td v-for="value,key in headers" :key="key"> {{ key }}: {{ value }} {{ item }}</td> -->
-          <td v-for="_, key in headers" :key="key"> {{ item[key] }}</td>
+          <td v-for="_, key in headers" :key="key" @click="$emit('select', item)"> {{
+            item[key] }}</td>
         </tr>
       </tbody>
     </table>
@@ -25,22 +27,16 @@ const props = defineProps<{
 
 <style scoped>
 #table {
-  /* border: 1px solid red; */
   width: 80vw;
-  height: 40vh;
+  max-height: 59vh;
   display: flex;
   justify-content: center;
-  overflow: scroll;
+  overflow-y: scroll;
   overflow-x: hidden;
 }
-/* #table {
-  margin: 2rem;
-  width: 100%;
-  height: 40vh;
-} */
 
 table {
-  width: 70vw;
+  width: 75vw;
 }
 
 tbody {
@@ -49,17 +45,28 @@ tbody {
 }
 
 tbody tr:nth-child(even) {
-  background-color: var(--main-light) !important;
+  background-color: var(--main-light);
 }
 
 th {
   background-color: white;
   position: sticky;
   top: 0;
+  text-align: left;
 }
 
 th,
 td {
   padding: 5px;
+}
+
+td {
+  cursor: pointer;
+}
+
+tbody tr:nth-child(even):hover,
+tbody tr:hover {
+  color: white;
+  background-color: var(--main-lighten);
 }
 </style>

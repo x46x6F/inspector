@@ -13,8 +13,13 @@ class PieceController extends Controller
      */
     public function index(): \Inertia\Response
     {
-        $pieces = Piece::with(['user', 'materials', 'campaigns'])->get();
-        return Inertia::render('Piece/Index', ['pieces' => $pieces]); 
+        $pieces = Piece::with(['materials', 'campaigns'])->get();
+        return Inertia::render('Pieces', [
+            'pieces' => Piece::query()
+                ->when(Request()->input('search'), function ($query, $search) {
+                    $query->where('name', 'like', '%' . $search . '%');
+                })->with(['materials', 'campaigns'])->get()
+        ]);
     }
 
     /**
@@ -36,9 +41,9 @@ class PieceController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Piece $pieces): \Inertia\Response
+    public function show(Piece $piece): \Inertia\Response
     {
-        return Inertia::render('Piece/Show', ['pieces' => $pieces]);
+        return Inertia::render('PieceDetails', ['piece' => $piece]);
     }
 
     /**
@@ -60,8 +65,8 @@ class PieceController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Piece $piece)
     {
-        //
+        $piece->delete();
     }
 }

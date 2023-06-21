@@ -11,6 +11,8 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\TypeController;
 use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -35,7 +37,9 @@ Route::get('/', function () {
 });
 
 Route::get('/dash', function () {
-    return Inertia::render('Dash');
+    if (Gate::allows('open-dash')) {
+        return Inertia::render('Dash');
+    }
 })->name('dash.index');
 
 Route::get('/dashboard', function () {
@@ -48,7 +52,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/home', function () {
-        return Inertia::render('Home');
+        return Inertia::render('Home', ['role_id' => Auth::user()->role_id]);
     })->name('home.index');
 
     Route::resource('pieces', PieceController::class);

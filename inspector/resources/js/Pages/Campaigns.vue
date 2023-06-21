@@ -1,7 +1,11 @@
 <script setup lang="ts">
-import TestComponent from '@/Components/TestComponent.vue';
 import Layout from '@/Layouts/Layout.vue';
 import { Head } from '@inertiajs/vue3';
+
+const props = defineProps<{
+  campaigns: Array<any>,
+  role_id: number
+}>()
 
 const head = {
   name: ''
@@ -11,9 +15,8 @@ const head = {
 
 <template>
   <Head title="Campagne" />
-    <Layout>
+    <Layout :role_id="props.role_id">
       <h1>Liste des campagnes</h1>
-      <TestComponent />
     </Layout>
 </template>
 

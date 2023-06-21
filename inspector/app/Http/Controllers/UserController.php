@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class UserController extends Controller
 {
@@ -11,7 +13,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+       //
     }
 
     /**
@@ -27,7 +29,35 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /**
+         * 0 login
+         * 1 password
+         * 2 role
+         * 3 email
+         */
+
+        $validated = $request->validate([
+            'file' => 'required | file | mimes : csv'
+        ]);
+
+        $csvFile = fopen(base_path($validated['file']), "r");
+        $firstline = true;
+
+        while (($data = fgetcsv($csvFile, 10240, ",")) !== FALSE) {
+            if (!$firstline) {
+               
+                $user =  User::firstOrCreate([
+                    'login' => $data[0],
+                    'password' => $data[1],
+                    'role' => $data[2],
+                    'email'=> $data[3]
+                ]);
+
+                return $this->index();
+            }
+
+            $firstline = false;
+        }
     }
 
     /**

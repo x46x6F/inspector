@@ -11,9 +11,10 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): \Inertia\Response
     {
-       //
+        $users = User::where('role_id', '!=', 1)->get();
+        return Inertia::render('Admin/Index', ['users' => $users]);
     }
 
     /**
@@ -21,7 +22,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        // Unused
     }
 
     /**
@@ -35,9 +36,8 @@ class UserController extends Controller
          * 2 role
          * 3 email
          */
-
         $validated = $request->validate([
-            'file' => 'required | file | mimes : csv'
+            'file' => 'required | file | mimes: csv'
         ]);
 
         $csvFile = fopen(base_path($validated['file']), "r");
@@ -45,14 +45,12 @@ class UserController extends Controller
 
         while (($data = fgetcsv($csvFile, 10240, ",")) !== FALSE) {
             if (!$firstline) {
-               
                 $user =  User::firstOrCreate([
                     'login' => $data[0],
                     'password' => $data[1],
                     'role' => $data[2],
-                    'email'=> $data[3]
+                    'email' => $data[3]
                 ]);
-
                 return $this->index();
             }
 
@@ -63,32 +61,33 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(User $user)
     {
-        //
+        // Unused
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(User $user)
     {
-        //
+        // Unused
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, User $user)
     {
-        //
+        // Unused
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(User $user)
     {
-        
+        $user->delete();
+        return $this->index();
     }
 }

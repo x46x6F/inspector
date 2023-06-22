@@ -23,8 +23,6 @@ class UserController extends Controller
      */
     public function index(): \Inertia\Response
     {
-        //TODO : Proteger l'accès à cette méthode pour que seul un Super admin puisse y accéder : policy ou gate ??? 
-
         $users = User::with('role')->whereRelation('role', 'role', '<>', 'Super admin')->get();
 
         return Inertia::render('Admin/Index', ['users' => $users,]);

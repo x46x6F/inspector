@@ -29,7 +29,7 @@ class PiecePolicy
      */
     public function create(User $user): bool
     {
-        return $user->role_id === 3;
+        // return $user->role_id === 3;
     }
 
     /**
@@ -37,7 +37,7 @@ class PiecePolicy
      */
     public function update(User $user, Piece $piece): bool
     {
-        return $user->role_id === 3;
+        // return $user->role_id === 3;
     }
 
     /**
@@ -45,7 +45,7 @@ class PiecePolicy
      */
     public function delete(User $user, Piece $piece): bool
     {
-        return $user->role_id === 3;
+        // return $user->role_id === 3;
     }
 
     /**

@@ -5,10 +5,6 @@ import Layout from '@/Layouts/HomeLayout.vue'
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import { Head, Link, router } from '@inertiajs/vue3';
 
-const props = defineProps<{
-  role_id: number
-}>()
-
 </script>
 
 <template>

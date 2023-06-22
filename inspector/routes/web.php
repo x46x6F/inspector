@@ -10,6 +10,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\TypeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -54,6 +55,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/home', function () {
         return Inertia::render('Home', ['role_id' => Auth::user()->role_id]);
     })->name('home.index');
+
+    Route::resource('admin', UserController::class);
 
     Route::resource('pieces', PieceController::class);
 

@@ -2,19 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class UserController extends Controller
 {
+    public function __construct() 
+    {
+        $this->middleware('can:manageUser');
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index(): \Inertia\Response
     {
-        $users = User::where('role_id', '!=', 1)->get();
-        return Inertia::render('Admin/Index', ['users' => $users]);
+        //TODO : Proteger l'accès à cette méthode pour que seul un Super admin puisse y accéder : policy ou gate ??? 
+
+        $users = User::with('role')->whereRelation('role', 'role', '<>', 'Super admin')->get();
+        
+        return Inertia::render('Admin/Index', ['users' => $users,]);
     }
 
     /**
@@ -85,9 +95,9 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(User $user)
+    public function destroy(User $admin)
     {
-        $user->delete();
+        $admin->delete();
         return $this->index();
     }
 }

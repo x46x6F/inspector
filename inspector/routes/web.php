@@ -38,10 +38,9 @@ Route::get('/', function () {
 });
 
 Route::get('/dash', function () {
-    // if (Gate::allows('open-dash')) {
-    //     return Inertia::render('Dash');
-    // }
-    return Inertia::render('Dash');
+    if (Gate::allows('open-dash')) {
+        return Inertia::render('Dash');
+    }
 })->name('dash.index');
 
 Route::get('/dashboard', function () {

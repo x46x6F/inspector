@@ -1,16 +1,13 @@
 <script setup>
-import { Link, router } from '@inertiajs/vue3';
+import { Link, router, usePage } from '@inertiajs/vue3';
 import { computed } from 'vue';
 
-const props = defineProps({
-  role_id: {
-        type: Number,
-        default: 0,
-    },
-})
+const page = usePage()
 
-const role = computed(() => {
-  return props.role_id == 4 || props.role_id == 1 ? true : false
+
+const canViewDashboard = computed(() => {
+  // return page.props.auth?.user.canViewDashboard
+  return page.props.auth?.user.canViewDashboard
 })
 </script>
 
@@ -28,8 +25,8 @@ const role = computed(() => {
       <Link href="/campaigns" :class="{ 'active': $page.url.includes('/campaigns') }">Campagnes</Link>
       <Link href="/pieces" :class="{ 'active': $page.url.includes('/pieces') }">Référentiel pièces</Link>
       <Link href="/materials" :class="{ 'active': $page.url.includes('/materials') }">Référentiel matériels</Link>
-      <Link href="/dash" :class="{ 'active': $page.url.includes('/dash') }" v-if="role">Qualité & sécurité</Link>
-      <Link class="unauthorized" v-if="!role">Qualité & sécurité</Link>
+      <Link href="/dash" :class="{ 'active': $page.url.includes('/dash') }" v-if="canViewDashboard">Qualité & sécurité</Link>
+      <Link class="unauthorized" href="#" v-else>Qualité & sécurité</Link>
     </div>
       <div class="nav-bottom">
       <span></span>

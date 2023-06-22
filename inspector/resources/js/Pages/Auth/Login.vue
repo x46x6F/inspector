@@ -84,6 +84,7 @@ button {
     /* border: 1px solid red; */
     display: flex;
     justify-content: center;
+    width: 100%;
 }
 
 .label {

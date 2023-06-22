@@ -31,7 +31,7 @@ class DatabaseRealSeeder extends Seeder
             'name' => 'Admin',
             'email' => 'admin@admin.fr',
             'password' => '$2y$10$MF.cxfoQt0aNdtHdlHXt.OaMCwUCMSF2/76BOsnvu14dClcAQTPKW',
-            'role_id' => 1
+            'role_id' => Role::where('role', 'Super admin')->first()->id,
         ]);
     }
 }

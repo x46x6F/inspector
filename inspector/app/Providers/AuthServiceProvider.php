@@ -25,8 +25,10 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
         Gate::define('open-dash', function () {
-            return Auth::user()->id === 4 || 1;
+            return Auth::user()->canViewDashboard;
         });
-        //
+        Gate::define('manageUser', function() {
+            return Auth::user()->isSuperAdmin;
+        });
     }
 }

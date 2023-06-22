@@ -14,13 +14,11 @@ class PieceController extends Controller
      */
     public function index(): \Inertia\Response
     {
-        $pieces = Piece::with(['materials', 'campaigns'])->get();
         return Inertia::render('Pieces', [
             'pieces' => Piece::query()
                 ->when(Request()->input('search'), function ($query, $search) {
                     $query->where('name', 'like', '%' . $search . '%');
-                })->with(['materials', 'campaigns'])->get(),
-            'role_id' => Auth::user()->role_id
+                })->with(['material', 'campaigns'])->get(),
         ]);
     }
 

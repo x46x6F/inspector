@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Material extends Model
@@ -15,7 +16,7 @@ class Material extends Model
      * 
      * @return BelongsTo
      */
-    public function sites(): BelongsTo
+    public function site(): BelongsTo
     {
         return $this->belongsTo(Site::class);
     }
@@ -25,7 +26,7 @@ class Material extends Model
      * 
      * @return BelongsTo
      */
-    public function models(): BelongsTo
+    public function model(): BelongsTo
     {
         return $this->belongsTo(Model::class);
     }
@@ -38,5 +39,17 @@ class Material extends Model
     public function pieces(): HasMany
     {
         return $this->hasMany(Piece::class);
+    }
+
+    /**
+     * Get campaign from material
+     *
+     * @return BelognsToMany
+     */
+    public function campaigns(): BelongsToMany
+    {
+        return $this->belongsToMany(Campaign::class, 'campaigns')->withPivot([
+            'description'
+        ]);
     }
 }

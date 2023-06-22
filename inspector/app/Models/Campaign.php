@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Campaign extends Model
 {
@@ -30,7 +31,7 @@ class Campaign extends Model
      * @return BelongsTo
      */
 
-    public function sites(): BelongsTo
+    public function site(): BelongsTo
     {
         return $this->belongsTo(Site::class);
     }
@@ -44,18 +45,39 @@ class Campaign extends Model
 
     public function pieces(): BelongsToMany
     {
-        return $this->belongsToMany(Piece::class, 'audits', 'campaign_id', 'piece_id');
+        return $this->belongsToMany(Campaign::class, 'audits', 'piece_id', 'campaign_id')->withPivot([
+            'audit',
+            'presence',
+            'functional',
+            'month',
+            'usury',
+            'change',
+            'complement',
+            'recommended',
+         ]);
     }
 
     /**
+     * Get material from campaign
+     *
+     * @return HasMany 
+     */
+    public function materials(): BelongsToMany
+    {
+        return $this->belongsToMany(Material::class, 'materials')->withPivot([
+            'description'
+        ]);
+    }
+
+     /**
      * 
      * Get the audit of the campaign
      *
-     * @return BelongsTo
+     * @return HasMany
      */
 
-    public function audits(): BelongsTo
-    {
-        return $this->belongsTo(Audit::class);
-    }
+     public function audits(): HasMany
+     {
+         return $this->hasMany(Audit::class);
+     }
 }

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Piece extends Model
 {
@@ -18,7 +19,7 @@ class Piece extends Model
      * 
      * @return BelongsTo
      */
-    public function models(): BelongsTo
+    public function model(): BelongsTo
     {
         return $this->belongsTo(Piece::class);
     }
@@ -28,7 +29,7 @@ class Piece extends Model
      * 
      * @return BelongsTo
      */
-    public function materials(): BelongsTo
+    public function material(): BelongsTo
     {
         return $this->belongsTo(Material::class);
     }
@@ -40,6 +41,27 @@ class Piece extends Model
      */
     public function campaigns(): BelongsToMany
     {
-        return $this->belongsToMany(Campaign::class, 'audit', 'piece_id', 'campaign_id');
+        return $this->belongsToMany(Campaign::class, 'audit', 'piece_id', 'campaign_id')->withPivot([
+           'audit',
+           'presence',
+           'functional',
+           'month',
+           'usury',
+           'change',
+           'complement',
+           'recommended',
+        ]);
     }
+
+    /**
+     * 
+     * Get the audit of the campaign
+     *
+     * @return HasMany
+     */
+
+     public function audits(): HasMany
+     {
+         return $this->hasMany(Audit::class);
+     }
 }

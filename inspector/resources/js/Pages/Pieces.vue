@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import axios from 'axios'
+import axios from 'axios';
 import DynamicTable from '@/Components/DynamicTable.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import SearchBar from '@/Components/SearchBar.vue';
@@ -53,7 +53,7 @@ const watcher = (search) => {
     <h1>Référentiel Pièces</h1>
 
     <div class="option">
-      <UploadButton  v-if="props.role_id === 3"/>
+      <UploadButton  v-if="props.role_id === 3 || props.role_id === 1"/>
       <SearchBar @write="watcher"/>
     </div>
 

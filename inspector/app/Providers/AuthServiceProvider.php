@@ -25,7 +25,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
         Gate::define('open-dash', function () {
-            return Auth::user()->id === 4;
+            return Auth::user()->id === 4 || 1;
         });
         //
     }

@@ -1,11 +1,16 @@
 <script setup>
 import { Link, router } from '@inertiajs/vue3';
+import { computed } from 'vue';
 
 const props = defineProps({
   role_id: {
         type: Number,
         default: 0,
     },
+})
+
+const role = computed(() => {
+  return props.role_id == 4 || props.role_id == 1 ? true : false
 })
 </script>
 
@@ -23,8 +28,8 @@ const props = defineProps({
       <Link href="/campaigns" :class="{ 'active': $page.url.includes('/campaigns') }">Campagnes</Link>
       <Link href="/pieces" :class="{ 'active': $page.url.includes('/pieces') }">Référentiel pièces</Link>
       <Link href="/materials" :class="{ 'active': $page.url.includes('/materials') }">Référentiel matériels</Link>
-      <Link href="/dash" :class="{ 'active': $page.url.includes('/dash') }" v-if="props.role_id === 4">Qualité & sécurité</Link>
-      <Link class="unauthorized" v-if="props.role_id != 4">Qualité & sécurité</Link>
+      <Link href="/dash" :class="{ 'active': $page.url.includes('/dash') }" v-if="role">Qualité & sécurité</Link>
+      <Link class="unauthorized" v-if="!role">Qualité & sécurité</Link>
     </div>
       <div class="nav-bottom">
       <span></span>

@@ -62,9 +62,9 @@ class AuditController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Audit $audit)
     {
-        //
+        return Inertia::render('Audit/Show', ['audit' => $audit]);
     }
 
     /**
@@ -108,8 +108,9 @@ class AuditController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Audit $audit): \Inertia\Response
     {
-        //
+        $audit->delete();
+        return $this->index();
     }
 }

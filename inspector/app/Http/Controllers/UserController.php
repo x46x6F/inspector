@@ -10,9 +10,12 @@ use Inertia\Inertia;
 
 class UserController extends Controller
 {
-    public function __construct() 
+    /**
+     * Create the controller instance.
+     */
+    public function __construct()
     {
-        $this->middleware('can:manageUser');
+        $this->authorizeResource(User::class, 'admin');
     }
 
     /**
@@ -23,7 +26,7 @@ class UserController extends Controller
         //TODO : Proteger l'accès à cette méthode pour que seul un Super admin puisse y accéder : policy ou gate ??? 
 
         $users = User::with('role')->whereRelation('role', 'role', '<>', 'Super admin')->get();
-        
+
         return Inertia::render('Admin/Index', ['users' => $users,]);
     }
 
@@ -71,7 +74,7 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(User $user)
+    public function show(User $admin)
     {
         // Unused
     }
@@ -79,7 +82,7 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(User $user)
+    public function edit(User $admin)
     {
         // Unused
     }
@@ -87,7 +90,7 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, User $admin)
     {
         // Unused
     }

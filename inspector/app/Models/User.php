@@ -52,16 +52,16 @@ class User extends Authenticatable
 
     public function canViewDashboard() : bool 
     {
-        return $this->isSuperAdmin() || $this->role === "Responsable sécurité";
+        return $this->isSuperAdmin() || $this->role->role === "Responsable sécurité";
     }
 
     public function isSuperAdmin(): bool
     {
-        return $this->role === "Super admin";
+        return $this->role->role === "Super admin";
     }
 
     public function canImportData() :bool
     {
-        return $this->isSuperAdmin() ||$this->role === "Chargé de référentiel";
+        return $this->isSuperAdmin() || $this->role->role === "Chargé de référentiel";
     }
 }

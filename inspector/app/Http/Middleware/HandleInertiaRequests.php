@@ -41,12 +41,12 @@ class HandleInertiaRequests extends Middleware
                 ]);
             },
         ]; 
-        if(Auth::user()) {
-            $user = Auth::user()->toArray();
+        if($request->user()) {
+            $user = $request->user()->toArray();
             
-            $user['canViewDashboard'] =  Auth::user()->canViewDashboard();
-            $user['isSuperAdmin'] =  Auth::user()->isSuperAdmin();
-            $user['canImportData'] = Auth::user()->canImportData();
+            $user['canViewDashboard'] =  $request->user()->canViewDashboard();
+            $user['isSuperAdmin'] =  $request->user()->isSuperAdmin();
+            $user['canImportData'] = $request->user()->canImportData();
             $sharedData["auth"] = [
                 "user" => $user
             ];

@@ -35,14 +35,14 @@ class AuditController extends Controller
     public function store(Request $request): \Illuminate\Http\RedirectResponse
     {
         $validated = $request->validate([
-            'audit' => 'required | array',
-            'presence'=> 'required | array',
-            'functional' => 'required | array',
+            'audit' => 'required | boolean',
+            'presence'=> 'required | boolean',
+            'functional' => 'required | boolean',
             'month' => 'required | max:2',
-            'usury' => 'required | array',
-            'change' => 'required | array',
-            'complement' => 'required | array',
-            'recommended'=> 'required | array'
+            'usury' => 'required | boolean',
+            'change' => 'required | boolean',
+            'complement' => 'required | boolean',
+            'recommended'=> 'required | boolean'
         ]);
 
         $audit = new Audit();
@@ -81,14 +81,14 @@ class AuditController extends Controller
     public function update(Request $request, Audit $audit): \Illuminate\Http\RedirectResponse
     {
         $validated = $request->validate([
-            'audit' => 'required | array',
-            'presence'=> 'required | array',
-            'functional' => 'required | array',
+            'audit' => 'required | boolean',
+            'presence'=> 'required | boolean',
+            'functional' => 'required | boolean',
             'month' => 'required | max:2',
-            'usury' => 'required | array',
-            'change' => 'required | array',
-            'complement' => 'required | array',
-            'recommended'=> 'required | array'
+            'usury' => 'required | boolean',
+            'change' => 'required | boolean',
+            'complement' => 'required | boolean',
+            'recommended'=> 'required | boolean'
         ]);
 
         $audit->word = $validated['audit'];

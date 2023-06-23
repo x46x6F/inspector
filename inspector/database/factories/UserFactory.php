@@ -23,7 +23,7 @@ class UserFactory extends Factory
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => '$2y$10$MF.cxfoQt0aNdtHdlHXt.OaMCwUCMSF2/76BOsnvu14dClcAQTPKW', // password
-            'role_id' => collect(Role::where('role', '<>', 'Super admin')->pluck('id'))->random(),
+            'role_id' => collect(Role::where('name', '<>', 'Super admin')->pluck('id'))->random(),
             'remember_token' => Str::random(10),
         ];
     }

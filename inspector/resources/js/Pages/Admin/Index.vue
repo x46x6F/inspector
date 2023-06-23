@@ -33,7 +33,7 @@ const closeModal = () => {
 }
 
 const users = computed(() => {
-  return props.users.map(u => {return {...u, role:u.role.role}})
+  return props.users.map(u => {return {...u, role:u.role.name}})
 })
 
 const deleteU = user => {

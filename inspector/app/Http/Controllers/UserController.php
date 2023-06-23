@@ -23,7 +23,7 @@ class UserController extends Controller
      */
     public function index(): \Inertia\Response
     {
-        $users = User::with('role')->whereRelation('role', 'role', '<>', 'Super admin')->get();
+        $users = User::with('role')->whereRelation('role', 'name', '<>', 'Super admin')->get();
 
         return Inertia::render('Admin/Index', ['users' => $users,]);
     }
@@ -59,7 +59,7 @@ class UserController extends Controller
                 $user =  User::firstOrCreate([
                     'login' => $data[0],
                     'password' => $data[1],
-                    'role' => $data[2],
+                    'role_id' => $data[2],
                     'email' => $data[3]
                 ]);
                 return $this->index();

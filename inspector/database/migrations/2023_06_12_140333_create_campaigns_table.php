@@ -15,7 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('status');
-            $table->foreignId('user_id')->reference('id')->on('users');
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->foreignId('creator_id')->reference('id')->on('users');
+            $table->foreignId('auditor_id')->reference('id')->on('users');
             $table->foreignId('site_id')->reference('id')->on('sites');
             $table->timestamps();
         });

@@ -30,7 +30,7 @@ features0, 1N sites, 11 materials
 :
 types: id, name, domain
 
-roles: id, role
+roles: id, name
 audit0, 0N users, 11 campaigns
 campaigns: id, name, status, start_date, end_date
 concern0, 1N campaigns, 0N materials: description
@@ -80,7 +80,7 @@ Table users {
 
 Table roles {
   id int PK
-  role varchar(255)
+  name varchar(255)
 }
 
 Table campaigns {

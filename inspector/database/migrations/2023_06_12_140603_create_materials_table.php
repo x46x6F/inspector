@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('materials', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->boolean('has_electro');
             $table->integer('creation_year');
             $table->boolean('status');

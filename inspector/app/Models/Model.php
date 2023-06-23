@@ -12,6 +12,8 @@ class Models extends Model
 {
     use HasFactory;
 
+    public $incrementing = false;
+
     /**
      * Get the constructor from a model
      * 

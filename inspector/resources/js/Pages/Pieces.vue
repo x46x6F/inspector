@@ -4,13 +4,13 @@ import SearchBar from '@/Components/SearchBar.vue';
 import UploadButton from '@/Components/UploadButton.vue';
 import Modal from '@/Components/Modal.vue';
 import Layout from '@/Layouts/Layout.vue';
-import { Head, router, usePage } from '@inertiajs/vue3';
-import { ref, watch,  } from 'vue';
+import { Head, router, usePage, useForm } from '@inertiajs/vue3';
+import { ref, watch, } from 'vue';
 
 const page = usePage()
 
 const props = defineProps<{
-  pieces: Array<any>, 
+  pieces: Array<any>,
 }>()
 
 const head =
@@ -25,7 +25,7 @@ const modal = ref(false)
 
 let piece: any;
 
-const openModal = (item:any) => {
+const openModal = (item: any) => {
   modal.value = true;
   return piece = item;
 }
@@ -35,12 +35,21 @@ const closeModal = () => {
 }
 
 const watcher = (search) => {
-  
+
   router.get(
     "/pieces",
-    { search: search},
-    { preserveState: true, replace: true}
+    { search: search },
+    { preserveState: true, replace: true }
   )
+}
+
+const form = useForm({
+  file: ''
+})
+
+const sendFile = e => {
+  form.file = e.target.files[0]
+  form.post(route('pieces.store'))
 }
 </script>
 
@@ -53,8 +62,8 @@ const watcher = (search) => {
 
     <div class="option">
       <!-- <UploadButton  v-if="isSuperAdmin"/> -->
-      <UploadButton  v-if="page.props.auth?.user.canImportData"/>
-      <SearchBar @write="watcher"/>
+      <UploadButton v-if="page.props.auth?.user.canImportData" @change="sendFile" />
+      <SearchBar @write="watcher" />
     </div>
 
     <DynamicTable :headers="head" :data="props.pieces" @select="openModal" />
@@ -67,7 +76,6 @@ const watcher = (search) => {
 </template>
 
 <style scoped>
-
 h1 {
   padding: 2.8rem 4rem;
   text-align: center;

@@ -61,8 +61,9 @@ class Models extends Model
      * 
      * @return BelongsToMany
      */
-    public function compatibles(): BelongsToMany
-    {
-        return $this->belongsToMany(Model::class, 'compatible', 'model_id', 'model_id');
-    }
+    // ! Ne marchera pas
+    // public function compatibles(): BelongsToMany
+    // {
+    //     return $this->belongsToMany(Model::class, 'compatible', 'model_id', 'model_id');
+    // }
 }

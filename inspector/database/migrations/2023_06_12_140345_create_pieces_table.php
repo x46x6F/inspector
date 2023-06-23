@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('material_id')->reference('id')->on('materials');
             $table->foreignId('model_id')->reference('id')->on('models');
-            $table->string('name');
             $table->integer('creation_year');
             $table->boolean('has_electro');
             $table->boolean('status');

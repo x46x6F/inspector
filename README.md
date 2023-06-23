@@ -186,6 +186,11 @@ Table csv_pieces {
   status bool
 }
 
+Table compatible {
+  model_id int PK
+  compatible_id int PK
+}
+
 Ref: users.role_id > roles.id
 Ref: campaigns.creator_id > users.id
 Ref: campaigns.auditor_id > users.id
@@ -200,6 +205,8 @@ Ref: models.id > materials.model_id
 Ref: models.id > pieces.model_id
 Ref: models.type_id > types.id
 Ref: models.constructor_id > constructors.id
+Ref: models.id > compatible.model_id
+Ref: models.id > compatible.compatible_id
 ```
 
 ![MCD 1nspect0r](MERISE/1nspect0rMLD.png)

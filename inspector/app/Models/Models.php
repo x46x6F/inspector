@@ -14,6 +14,8 @@ class Models extends Model
 
     public $incrementing = false;
 
+    public $keyType = 'string';
+
     /**
      * Get the constructor from a model
      * 

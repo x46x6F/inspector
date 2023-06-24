@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Models;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -21,7 +22,7 @@ class PieceFactory extends Factory
             'has_electro' => fake()->boolean(),
             'status' => fake()->boolean(),
             'material_id' => fake()->numberBetween(1, 100),
-            'model_id' => 28,
+            'model_id' => collect(Models::all()->pluck('id'))->random(),
         ];
     }
 }

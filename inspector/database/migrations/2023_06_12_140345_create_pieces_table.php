@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('pieces', function (Blueprint $table) {
             $table->id();
             $table->foreignId('material_id')->reference('id')->on('materials');
-            $table->foreignId('model_id')->reference('id')->on('models');
+            $table->string('model_id')->reference('id')->on('models');
             $table->integer('creation_year');
             $table->boolean('has_electro');
             $table->boolean('status');

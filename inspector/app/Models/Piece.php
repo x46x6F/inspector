@@ -21,7 +21,7 @@ class Piece extends Model
      */
     public function model(): BelongsTo
     {
-        return $this->belongsTo(Models::class);
+        return $this->belongsTo(\App\Models\Model::class);
     }
 
     /**

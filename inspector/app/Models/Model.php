@@ -3,12 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model as AbstractModel;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Models extends Model
+class Model extends AbstractModel
 {
     use HasFactory;
 
@@ -63,9 +63,8 @@ class Models extends Model
      * 
      * @return BelongsToMany
      */
-    // ! Ne marchera pas
-    // public function compatibles(): BelongsToMany
-    // {
-    //     return $this->belongsToMany(Model::class, 'compatible', 'model_id', 'model_id');
-    // }
+    public function compatibles(): BelongsToMany
+    {
+        return $this->belongsToMany(\App\Models\Model::class, 'compatible', 'model_id', 'model_id');
+    }
 }

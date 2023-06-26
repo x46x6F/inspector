@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AuditController;
 use App\Http\Controllers\CampaignController;
+use App\Http\Controllers\Campaigns_MaterialsController;
+use App\Http\Controllers\CompatibleController;
 use App\Http\Controllers\ConstructorController;
 use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\ModelController;
@@ -75,6 +77,10 @@ Route::middleware('auth')->group(function () {
     Route::resource('types', TypeController::class);
 
     Route::resource('audits', AuditController::class);
+
+    Route::resource('compatibles', CompatibleController::class);
+
+    Route:: resource('campaigns_materials', Campaigns_MaterialsController::class);
 });
 
 require __DIR__ . '/auth.php';

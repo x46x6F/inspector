@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Compatible;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class CompatibleController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): \Inertia\Response
     {
-        //
+        $compatible = Compatible::get();
+        return Inertia::render('Compatible/Index', ['constructor' => $compatible]);  
     }
 
     /**
@@ -33,9 +36,9 @@ class CompatibleController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Compatible $compatible): \Inertia\Response
     {
-        //
+        return Inertia::render('Compatible/Show', ['compatible' => $compatible]);
     }
 
     /**

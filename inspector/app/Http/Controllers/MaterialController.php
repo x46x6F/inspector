@@ -30,7 +30,45 @@ class MaterialController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /**
+         * 0 constructor_id
+         * 1 model_id
+         * 2 model_name
+         * 3 type_id
+         * 4 creation_year
+         * 5 has_electro
+         * 6 status
+         * 7 site_id
+         * 8 piece_id
+         */
+
+         $validated = $request->validate([
+            'file' => 'required | file | mimes : csv'
+        ]);
+
+        $csvFile = fopen(base_path($validated['file']), "r");
+        $firstline = true;
+
+        while (($data = fgetcsv($csvFile, 10240, ",")) !== FALSE) {
+            if (!$firstline) {
+               
+                // $materials = Material::firstOrCreate([
+                //     'constructor_id' => $data[0],
+                //     'model_id' => $data[1],
+                //     'model_name' => $data[2],
+                //     'type_id'=> $data[3],
+                //     'creation_year'=> $data[4],
+                //     'has_electro'=>$data[5],
+                //     'status'=>$data[6],
+                //     'site_id'=>$data[7],
+                //     'piece_id'=>$data[8]
+                // ]);
+
+                return $this->index();
+            }
+
+            $firstline = false;
+        }
     }
 
     /**

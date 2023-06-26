@@ -21,6 +21,8 @@ class ModelFactory extends Factory
             'id' => Str::uuid(),
             'name' => fake()->company(),
             'status' => fake()->name(),
+            'has_electro' => fake()->boolean(),
+            'creation_year' => fake()->numberBetween(1980, 2023),
             'constructor_id' => fake()->numberBetween(0, 100),
             'type_id' => fake()->numberBetween(0, 100)
         ];

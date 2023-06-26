@@ -15,8 +15,11 @@ return new class extends Migration
             $table->string('id')->primary();
             $table->string('name');
             $table->string('status');
+            $table->boolean('has_electro');
+            $table->integer('creation_year');
             $table->foreignId('constructor_id')->reference('id')->on('constructors');
             $table->foreignId('type_id')->reference('id')->on('types');
+            $table->string('compose_id')->reference('id')->on('models')->nullable();
             $table->timestamps();
         });
     }

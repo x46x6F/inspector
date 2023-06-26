@@ -22,45 +22,63 @@
 #### *Explication du MCD :*
 
 ```
-:
-:
-belong1, 11 campaigns, 0N sites
-sites: id, name, adress, adress_comp, zip_code, city, number
-features0, 1N sites, 11 materials
-:
 types: id, name, domain
-
-roles: id, name
-audit0, 0N users, 11 campaigns
-campaigns: id, name, status, start_date, end_date
-concern0, 1N campaigns, 0N materials: description
-materials: id, name, has_electro, status, description
-characterize1, 11 materials, 1N models
 have0, 11 models, 1N types
-
-belong0, 0N roles, 11 users
-users: id, name, email, password
-create0, 0N users, 11 campaigns
-audit1, 1N campaigns, 1N pieces: audit, presence, functional, month, usury, change, complement, recommended
-compose0, 1N materials, 11 pieces
-models: id, name, status
-compatible0, 1N models, 1N models
+compose1, 1N models, 11 models
+:
+:
+:
+:
 
 :
-:
-:
-:
-pieces: id, name, has_electro, creation_year, status
-characterize0, 11 pieces, 1N models
 belong2, 11 models, 1N constructors
+models: id, name, status, has_electro, creation_year
+characterize1, 11 materials, 1N models
+materials: id, creation_year, status
+features0, 1N sites, 11 materials
+sites: id, name, adress, adress_comp, zip_code, city, number
 
-:
-:
-:
-:
-:
 :
 constructors: id, name
+characterize0, 11 pieces, 1N models
+compatible0, 1N models, 1N models
+compose0, 1N materials, 11 pieces
+concern0, 1N campaigns, 0N materials: description
+belong1, 11 campaigns, 0N sites
+
+:
+:
+:
+pieces: id, creation_year, status
+audit1, 1N campaigns, 1N pieces: audit, presence, functional, month, usury, change, complement, recommended
+campaigns: id, name, status, start_date, end_date
+audit0, 0N users, 11 campaigns
+
+:
+:
+:
+:
+:
+create0, 0N users, 11 campaigns
+users: id, name, email, password
+
+:
+:
+:
+:
+:
+:
+belong0, 0N roles, 11 users
+
+:
+:
+:
+:
+:
+:
+roles: id, name
+
+(X) --audit0, --create0
 ```
 
 ![MCD 1nspect0r](MERISE/1nspect0rMCD.png)
@@ -106,18 +124,14 @@ Table sites {
 
 Table materials {
   id int PK
-  name varchar(255)
-  has_electro bool
   status bool
-  description text
+  creation_year date
   model_id int
   site_id int
 }
 
 Table pieces {
   id int PK
-  name varchar(255)
-  has_electro bool
   status bool
   creation_year int
   model_id int
@@ -128,8 +142,11 @@ Table models {
   id int PK
   name varchar(255)
   status varchar(255)
+  has_electro bool
+  creation_year date
   constructor_id int
   type_id int
+  compose_id int
 }
 
 Table constructors {
@@ -207,6 +224,7 @@ Ref: models.type_id > types.id
 Ref: models.constructor_id > constructors.id
 Ref: models.id > compatible.model_id
 Ref: models.id > compatible.compatible_id
+Ref: models.id > models.compose_id
 ```
 
 ![MCD 1nspect0r](MERISE/1nspect0rMLD.png)

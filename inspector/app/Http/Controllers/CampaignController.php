@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Campaign;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -23,6 +24,7 @@ class CampaignController extends Controller
      */
     public function create(): \Inertia\Response
     {
+        $user = User::get();
         return Inertia::render('campaign/Create');
     }
 
@@ -36,6 +38,7 @@ class CampaignController extends Controller
             'status'=> 'required | max:255',
             'start_date' => 'required | date',
             'end_date' => 'required | date',
+
         ]);
 
         $campaign = new Campaign();
@@ -43,6 +46,7 @@ class CampaignController extends Controller
         $campaign->status = $validated['status'];
         $campaign->start_date = $validated['start_date'];
         $campaign->end_date = $validated['end_date'];
+        $campaign->creator_id = Auth::user()->id;
         
         $campaign->save();
 
@@ -77,12 +81,14 @@ class CampaignController extends Controller
             'status'=> 'required | max:255',
             'start_date' => 'required | date',
             'end_date' => 'required | date',
+
         ]);
 
         $campaign->name = $validated['name'];
         $campaign->status = $validated['status'];
         $campaign->start_date = $validated['start_date'];
         $campaign->end_date = $validated['end_date'];
+        $campaign->creator_id = Auth::user()->id;
         
         $campaign->save();
 

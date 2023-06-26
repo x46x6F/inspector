@@ -16,8 +16,6 @@ class Model extends AbstractModel
 
     public $keyType = 'string';
 
-    public $timestamps = false;
-
     /**
      * Get the constructor from a model
      * 

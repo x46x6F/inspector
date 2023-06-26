@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
 
 class campaigns_materials extends Pivot
 {
+    public $timestamps = false;
+    
     /**
      * 
      * Get the material with description

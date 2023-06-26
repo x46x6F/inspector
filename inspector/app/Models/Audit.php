@@ -12,6 +12,8 @@ class Audit extends Pivot
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     /**
      * 
      * Get the user who created the audit

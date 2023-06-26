@@ -10,6 +10,8 @@ class Type extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     /**
      * 
      * Get model from a type

@@ -10,7 +10,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Material extends Model
 {
-
+    public $timestamps = false;
+    
     /**
      * Get material in a site
      * 

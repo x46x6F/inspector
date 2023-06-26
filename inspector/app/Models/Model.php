@@ -16,6 +16,8 @@ class Model extends AbstractModel
 
     public $keyType = 'string';
 
+    public $timestamps = false;
+
     /**
      * Get the constructor from a model
      * 
@@ -65,6 +67,8 @@ class Model extends AbstractModel
      */
     public function compatibles(): BelongsToMany
     {
-        return $this->belongsToMany(\App\Models\Model::class, 'compatible', 'model_id', 'model_id');
+        return $this->belongsToMany(Model::class, 'compatible', 'model_id', 'model_id');
     }
+
+    
 }

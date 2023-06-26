@@ -24,7 +24,6 @@ class CampaignController extends Controller
      */
     public function create(): \Inertia\Response
     {
-        $user = User::get();
         return Inertia::render('campaign/Create');
     }
 

@@ -21,46 +21,46 @@
 
 #### *Explication du MCD :*
 
-  
-
-**A voir: Gate & policies, spatie**
-
 ```
-constructors: name
-belong0, 1N constructors, 11 modeles
-compatible, 1N modeles, 1N modeles
-types: name, domain
 :
+:
+belong1, 11 campaigns, 0N sites
+sites: id, name, adress, adress_comp, zip_code, city, number
+features0, 1N sites, 11 materials
+:
+types: id, name, domain
 
-:
-characterize0, 11 pieces, 1N modeles
-modeles: name, date_mm, status
-have0, 1N types, 11 modeles
-:
+roles: id, name
+audit0, 0N users, 11 campaigns
+campaigns: id, name, status, start_date, end_date
+concern0, 1N campaigns, 0N materials: description
+materials: id, name, has_electro, status, description
+characterize1, 11 materials, 1N models
+have0, 11 models, 1N types
 
-:
-pieces: creation_year, has_electro, status
-characterize1, 11 materials, 1N modeles
-roles: name
-have1, 0N roles, 11 users
-
-:
-constitute, 11 pieces, 1N materials
-materials: creation_year, status
-participate, 0N users, 11 campaigns
-users: login, password
-
-:
-:
-belong, 11 materials, 1N sites
-campaigns: name, start_date, end_date, status
-create, 0N users, 11 campaigns
+belong0, 0N roles, 11 users
+users: id, name, email, password
+create0, 0N users, 11 campaigns
+audit1, 1N campaigns, 1N pieces: audit, presence, functional, month, usury, change, complement, recommended
+compose0, 1N materials, 11 pieces
+models: id, name, status
+compatible0, 1N models, 1N models
 
 :
 :
-sites: adress
-audit, 1N sites, 11 campaigns
 :
+:
+pieces: id, name, has_electro, creation_year, status
+characterize0, 11 pieces, 1N models
+belong2, 11 models, 1N constructors
+
+:
+:
+:
+:
+:
+:
+constructors: id, name
 ```
 
 ![MCD 1nspect0r](MERISE/1nspect0rMCD.png)
@@ -70,94 +70,143 @@ audit, 1N sites, 11 campaigns
 > Made with ***[DBDiagram](https://dbdiagram.io/d/)***
 
 ```
-Table 1nspect0r.constructors {
-  id int [pk, increment] 
-  name varchar(100) unique
-}
-
-// types.domain qui determine si c'est un modele de piece ou de materiel
-Table 1nspect0r.modeles {
-  id int [pk]
-  name varchar(100)
-  date_mm date
-  status bool
-  constructor_id int
-  type_id int
-}
-
-Ref: 1nspect0r.modeles.constructor_id < 1nspect0r.constructors.id
-Ref: 1nspect0r.modeles.type_id < 1nspect0r.types.id
-
-Table 1nspect0r.compatibles {
-  modele_id int [pk]
-  compatible_modele_id int [pk]
-}
-
-Ref: 1nspect0r.compatibles.modele_id > 1nspect0r.modeles.id
-Ref: 1nspect0r.compatibles.compatible_modele_id > 1nspect0r.modeles.id
-
-// domain = material ou piece
-Table 1nspect0r.types {
-  id int [pk]
-  name varchar(100)
-  domain varchar(30)
-}
-
-Table 1nspect0r.pieces {
-  id int [pk]
-  creation_year date 
-  has_electro bool
-  material_id int
-  modele_id int
-}
-
-Ref: 1nspect0r.modeles.id < 1nspect0r.pieces.modele_id
-Ref: 1nspect0r.materials.id < 1nspect0r.pieces.material_id
-
-Table 1nspect0r.materials {
-  id int [pk]
-  creation_year date
-  site_id int
-  modele_id int
-}
-
-Ref: 1nspect0r.modeles.id < 1nspect0r.materials.modele_id
-Ref: 1nspect0r.sites.id < 1nspect0r.materials.site_id
-
-Table 1nspect0r.users {
-  id int [pk]
-  login varchar(50)
+Table users {
+  id int PK
+  name varchar(255)
+  email varchar(255)
   password varchar(255)
   role_id int
 }
 
-Ref: 1nspect0r.roles.id < 1nspect0r.users.role_id
-
-Table 1nspect0r.roles {
-  id int [pk]
-  name varchar(30)
+Table roles {
+  id int PK
+  name varchar(255)
 }
 
-Table 1nspect0r.campaigns {
-  id int [pk]
-  name varchar(150)
+Table campaigns {
+  id int PK
+  name varchar(255)
+  status varchar(255)
   start_date date
   end_date date
-  status varchar(30)
-  site_id int
   creator_id int
-  participant_id int
+  auditor_id int
+  site_id int
 }
 
-Ref: 1nspect0r.sites.id < 1nspect0r.campaigns.site_id
-Ref: 1nspect0r.users.id < 1nspect0r.campaigns.creator_id
-Ref: 1nspect0r.users.id < 1nspect0r.campaigns.participant_id
-
-Table 1nspect0r.sites {
-  id int [pk]
-  adress varchar(200)
+Table sites {
+  id int PK
+  name varchar(255)
+  adress varchar(255)
+  adress_comp varchar(255)
+  zip_code int
+  city varchar(255)
+  number int
 }
 
+Table materials {
+  id int PK
+  name varchar(255)
+  has_electro bool
+  status bool
+  description text
+  model_id int
+  site_id int
+}
+
+Table pieces {
+  id int PK
+  name varchar(255)
+  has_electro bool
+  status bool
+  creation_year int
+  model_id int
+  material_id int
+}
+
+Table models {
+  id int PK
+  name varchar(255)
+  status varchar(255)
+  constructor_id int
+  type_id int
+}
+
+Table constructors {
+  id int PK
+  name varchar(255)
+}
+
+Table types {
+  id int PK
+  name varchar(255)
+  domain varchar(255)
+}
+
+Table campaigns_materials{
+  material_id int PK
+  campaign_id int PK
+  description text
+}
+
+Table audit {
+  piece_id int PK
+  campaign_id int PK
+  audit bool
+  presence bool
+  functional bool
+  month int
+  usury bool
+  change bool
+  complement bool
+  recommended bool
+}
+
+Table csv_materials {
+  id int PK
+  constructor_id int
+  model_id int
+  type_id int
+  site_id int
+  piece_id int
+  model_name varchar(255)
+  creation_year int
+  has_electro bool
+  status bool
+}
+
+Table csv_pieces {
+  id int PK
+  constructor_id int
+  model_id int
+  type_id int
+  model_name varchar(255)
+  creation_year int
+  has_electro bool
+  status bool
+}
+
+Table compatible {
+  model_id int PK
+  compatible_id int PK
+}
+
+Ref: users.role_id > roles.id
+Ref: campaigns.creator_id > users.id
+Ref: campaigns.auditor_id > users.id
+Ref: campaigns.site_id > sites.id
+Ref: materials.site_id > sites.id
+Ref: campaigns_materials.campaign_id > campaigns.id
+Ref: campaigns_materials.material_id > materials.id
+Ref: campaigns.id > audit.campaign_id
+Ref: audit.piece_id > pieces.id
+Ref: materials.id > pieces.material_id
+Ref: models.id > materials.model_id
+Ref: models.id > pieces.model_id
+Ref: models.type_id > types.id
+Ref: models.constructor_id > constructors.id
+Ref: models.id > compatible.model_id
+Ref: models.id > compatible.compatible_id
 ```
 
 ![MCD 1nspect0r](MERISE/1nspect0rMLD.png)

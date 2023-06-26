@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('compatible', function (Blueprint $table) {
             $table->foreignId('model_id')->reference('id')->on('models');
-            $table->foreignId('model_id_2')->reference('id')->on('models');
-            $table->primary(['model_id', 'model_id_2']);
+            $table->foreignId('compatible_id')->reference('id')->on('models');
+            $table->primary(['model_id', 'compatible_id']);
         });
     }
 

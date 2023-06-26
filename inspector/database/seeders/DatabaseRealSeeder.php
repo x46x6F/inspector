@@ -15,10 +15,11 @@ class DatabaseRealSeeder extends Seeder
     public function run(): void
     {
         $roles = [
-            ['role' => 'Auditeur'],
-            ['role' => 'Chef de projet'],
-            ['role' => 'Chargé de référentiel'],
-            ['role' => 'Responsable sécurité']
+            ['name' => 'Super admin'],
+            ['name' => 'Chef de projet'],
+            ['name' => 'Chargé de référentiel'],
+            ['name' => 'Responsable sécurité'],
+            ['name' => 'Auditeur'],
         ];
 
         foreach ($roles as $role) {
@@ -30,7 +31,7 @@ class DatabaseRealSeeder extends Seeder
             'name' => 'Admin',
             'email' => 'admin@admin.fr',
             'password' => '$2y$10$MF.cxfoQt0aNdtHdlHXt.OaMCwUCMSF2/76BOsnvu14dClcAQTPKW',
-            'role_id' => 2
+            'role_id' => Role::where('name', 'Super admin')->first()->id,
         ]);
     }
 }

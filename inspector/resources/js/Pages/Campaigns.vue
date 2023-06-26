@@ -4,7 +4,6 @@ import { Head } from '@inertiajs/vue3';
 
 const props = defineProps<{
   campaigns: Array<any>,
-  role_id: number
 }>()
 
 const head = {
@@ -15,7 +14,7 @@ const head = {
 
 <template>
   <Head title="Campagne" />
-    <Layout :role_id="props.role_id">
+    <Layout>
       <h1>Liste des campagnes</h1>
     </Layout>
 </template>

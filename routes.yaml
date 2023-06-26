@@ -1,0 +1,874 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: 1nspect0r Routes
+  description: Illustration de toutes les routes
+tags:
+  - name: Admins
+    description: Routes pour les admins
+  - name: "Audits"
+    description: Routes pour le model Audit
+  - name: Auth
+    description: Routes pour l'authentification
+  - name: "Campaigns"
+    description: Routes pour le model Campaign
+  - name: "Constructors"
+    description: Routes pour le model Constructors
+  - name: "Materials"
+    description: Routes pour le model Materials
+  - name: "Models"
+    description: Routes pour le model Models
+  - name: "Pieces"
+    description: Routes pour le model Piece
+  - name: "Roles"
+    description: Routes pour le model Roles
+  - name: Sites
+    description: Route pour le model Sites
+  - name: Types
+    description: Route pour le model Types
+  - name: "Autres routes"
+    description: Autres routes
+
+paths:
+  /pieces:
+    get:
+      tags:
+        - "Pieces"
+      summary: Récupérer toutes les pièces de la BDD
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/pieceIndex"
+    post:
+      tags:
+        - "Pieces"
+      summary: Créer une nouvelle pièce
+      responses:
+        200:
+          description: OK
+  /pieces/{piece}:
+    get:
+      tags:
+        - "Pieces"
+      summary: Récupérer une pièce de la BDD
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/pieceShow"
+    put:
+      tags:
+        - "Pieces"
+      summary: Modifier une pièce de la BDD
+      responses:
+        200:
+          description: OK
+    delete:
+      tags:
+        - "Pieces"
+      summary: Supprimer une pièce de la BDD
+      responses:
+        200:
+          description: OK
+  /pieces/create:
+    get:
+      tags:
+        - "Pieces"
+      summary: Affiche le formulaire pour la création
+      responses:
+        200:
+          description: OK
+      deprecated: true
+  /pieces/{piece}/edit:
+    get:
+      tags:
+        - "Pieces"
+      summary: Affiche le formulaire de modification
+      responses:
+        200:
+          description: OK
+      deprecated: true
+  /audits:
+    get:
+      tags:
+        - "Audits"
+      summary: Récupérer tout les audits
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/auditIndex"
+    post:
+      tags:
+        - "Audits"
+      summary: Créer un nouvel audit
+      responses:
+        200:
+          description: OK
+  /audits/{audit}:
+    get:
+      tags:
+        - "Audits"
+      summary: Afficher un audit
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/auditShow"
+    put:
+      tags:
+        - "Audits"
+      summary: Modifier un audit
+      responses:
+        200:
+          description: OK
+    delete:
+      tags:
+        - "Audits"
+      summary: Supprimer un audit
+      responses:
+        200:
+          description: OK
+  /audits/create:
+    get:
+      tags:
+        - "Audits"
+      summary: Afficher le formulaire de création
+      responses:
+        200:
+          description: OK
+      deprecated: true
+  /audits/{audit}/edit:
+    get:
+      tags:
+        - "Audits"
+      summary: Affiche le formulaire de modification
+      responses:
+        200:
+          description: OK
+      deprecated: true
+  /campaigns:
+    get:
+      tags:
+        - "Campaigns"
+      summary: Récupérer toutes les campagnes
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/campaignIndex"
+    post:
+      tags:
+        - "Campaigns"
+      summary: Créer une nouvelle campagne
+      responses:
+        200:
+          description: OK
+  /campaigns/{campaign}:
+    get:
+      tags:
+        - "Campaigns"
+      summary: Afficher une campagne
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/campaignShow"
+    put:
+      tags:
+        - "Campaigns"
+      summary: Modifier une campagne
+      responses:
+        200:
+          description: OK
+    delete:
+      tags:
+        - "Campaigns"
+      summary: Supprimer une campagne
+      responses:
+        200:
+          description: OK
+  /campaigns/create:
+    get:
+      tags:
+        - "Campaigns"
+      summary: Affiche le formulaire de création
+      responses:
+        200:
+          description: OK
+  /campaigns/{campaign}/edit:
+    get:
+      tags:
+        - "Campaigns"
+      summary: Affiche le formulaire de modification
+      responses:
+        200:
+          description: OK
+  /constructors:
+    get:
+      tags:
+        - "Constructors"
+      summary: Récupérer tout les constructeurs
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/constructorIndex"
+    post:
+      tags:
+        - "Constructors"
+      summary: Créer un nouveeau constructeur
+      responses:
+        200:
+          description: OK
+  /constructors/{constructor}:
+    get:
+      tags:
+        - "Constructors"
+      summary: Afficher un constructeur
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/constructorShow"
+    put:
+      tags:
+        - "Constructors"
+      summary: Modifier un constructeur
+      responses:
+        200:
+          description: OK
+    delete:
+      tags:
+        - "Constructors"
+      summary: Supprimer un constructeur
+      responses:
+        200:
+          description: OK
+  /constructors/create:
+    get:
+      tags:
+        - "Constructors"
+      summary: Afficher le formulaire de création
+      responses:
+        200:
+          description: OK
+  /constructors/{constructor}/edit:
+    get:
+      tags:
+        - "Constructors"
+      summary: Afficher le formulaire de modification
+      responses:
+        200:
+          description: OK
+  /dash:
+    get:
+      tags:
+        - "Autres routes"
+      summary: Affiche le tableau de bord
+      responses:
+        200:
+          description: OK
+  /home:
+    get:
+      tags:
+        - "Autres routes"
+      summary: Affiche la page d'accueil
+      responses:
+        200:
+          description: OK
+  /materials:
+    get:
+      tags:
+        - "Materials"
+      summary: Récupérer tout les materiels
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/materialIndex"
+    post:
+      tags:
+        - "Materials"
+      summary: Créer un nouveau materiel
+      responses:
+        200:
+          description: OK
+  /materials/{material}:
+    get:
+      tags:
+        - "Materials"
+      summary: Affiche un matériel
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/materialShow"
+    put:
+      tags:
+        - "Materials"
+      summary: Modifier un matériel
+      responses:
+        200:
+          description: OK
+    delete:
+      tags:
+        - "Materials"
+      summary: Supprimer un matériel
+      responses:
+        200:
+          description: OK
+  /materials/create:
+    get:
+      tags:
+        - "Materials"
+      summary: Affiche le formulaire de création
+      responses:
+        200:
+          description: OK
+      deprecated: true
+  /materials/{material}/edit:
+    get:
+      tags:
+        - "Materials"
+      summary: Affiche le formulaire de modification
+      responses:
+        200:
+          description: OK
+      deprecated: true
+  /models:
+    get:
+      tags:
+        - "Models"
+      summary: Récupérer tout les modeles de pièces
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/modelsIndex"
+    post:
+      tags:
+        - "Models"
+      summary: Créer un nouveau modele de pièce
+      responses:
+        200:
+          description: OK
+  /models/{model}:
+    get:
+      tags:
+        - "Models"
+      summary: Affiche un modele
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/modelsShow"
+    put:
+      tags:
+        - "Models"
+      summary: Modifie un modele
+      responses:
+        200:
+          description: OK
+    delete:
+      tags:
+        - "Models"
+      summary: Supprime un modele
+      responses:
+        200:
+          description: OK
+  /models/create:
+    get:
+      tags:
+        - "Models"
+      summary: Affiche le formulaire de création
+      responses:
+        200:
+          description: OK
+  /models/{model}/edit:
+    get:
+      tags:
+        - "Models"
+      summary: Affiche le formulaire de modification
+      responses:
+        200:
+          description: OK
+  /sites:
+    get:
+      tags:
+        - "Sites"
+      summary: Récupérer tout les sites
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/sitesIndex"
+    post:
+      tags:
+        - "Sites"
+      summary: Créer un nouveau site
+      responses:
+        200:
+          description: OK
+  /sites/{site}:
+    get:
+      tags:
+        - "Sites"
+      summary: Affiche un site
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/sitesShow"
+    put:
+      tags:
+        - "Sites"
+      summary: Modifier un site
+      responses:
+        200:
+          description: OK
+    delete:
+      tags:
+        - "Sites"
+      summary: Supprimer un site
+      responses:
+        200:
+          description: OK
+  /sites/create:
+    get:
+      tags:
+        - "Sites"
+      summary: Affiche le formulaire de création
+      responses:
+        200:
+          description: Ok
+  /sites/{site}/edit:
+    get:
+      tags:
+        - "Sites"
+      summary: Affiche le formulaire de modification
+      responses:
+        200:
+          description: Ok
+  /types:
+    get:
+      tags:
+        - "Types"
+      summary: Récupérer tout les types de pièces
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/typesIndex"
+    post:
+      tags:
+        - "Types"
+      summary: Créer un nouveau type
+      responses:
+        200:
+          description: OK
+  /types/{type}:
+    get:
+      tags:
+        - "Types"
+      summary: Affiche un type
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/typesShow"
+    put:
+      tags:
+        - "Types"
+      summary: Modifie un type
+      responses:
+        200:
+          description: Ok
+    delete:
+      tags:
+        - "Types"
+      summary: Supprime un type
+      responses:
+        200:
+          description: Ok
+  /types/create:
+    get:
+      tags:
+        - "Types"
+      summary: Affiche le formulaire de création
+      responses:
+        200:
+          description: Ok
+  /types/{type}/edit:
+    get:
+      tags:
+        - "Types"
+      summary: Affiche le formulaire de modification
+      responses:
+        200:
+          description: Ok
+  /login:
+    get:
+      tags:
+        - "Auth"
+      summary: Affiche le formulaire de connexion
+      responses:
+        200:
+          description: Ok
+    post:
+      tags:
+        - "Auth"
+      summary: Créer la session de l'utilisateur
+      responses:
+        200:
+          description: Ok
+  /logout:
+    post:
+      tags:
+        - "Auth"
+      summary: Supprime la session de l'utilisateur
+      responses:
+        200:
+          description: Ok
+  /admins:
+    get:
+      tags:
+        - "Admins"
+      summary: Récupere tout les admins
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/adminsIndex"
+    post:
+      tags:
+        - "Admins"
+      summary: Créer un nouvel utilisateur
+      responses:
+        200:
+          description: Ok
+  /admins/{admin}:
+    delete:
+      tags:
+        - "Admins"
+      summary: Supprime un utilisateur
+      responses:
+        200:
+          description: Ok
+
+definitions:
+  pieceIndex:
+    # Trouver comment montrer qu'on reçoit pas qu'un seul objet
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+        material_id:
+          type: integer
+        model_id:
+          type: integer
+        name:
+          type: string
+        creation_year:
+          type: string
+        has_electro:
+          type: boolean
+        status:
+          type: boolean
+  pieceShow:
+    type: object
+    properties:
+      id:
+        type: integer
+      material_id:
+        type: integer
+      model_id:
+        type: integer
+      name:
+        type: string
+      creation_year:
+        type: string
+      has_electro:
+        type: boolean
+      status:
+        type: boolean
+  auditIndex:
+    type: array
+    items:
+      type: object
+      properties:
+        campaign_id:
+          type: integer
+        piece_id:
+          type: integer
+        audit:
+          type: boolean
+        presence:
+          type: boolean
+        functional:
+          type: boolean
+        month:
+          type: integer
+        usury:
+          type: boolean
+        change:
+          type: boolean
+        complement:
+          type: boolean
+        recommended:
+          type: boolean
+  auditShow:
+    type: object
+    properties:
+      campaign_id:
+        type: integer
+      piece_id:
+        type: integer
+      audit:
+        type: boolean
+      presence:
+        type: boolean
+      functional:
+        type: boolean
+      month:
+        type: integer
+      usury:
+        type: boolean
+      change:
+        type: boolean
+      complement:
+        type: boolean
+      recommended:
+        type: boolean
+  campaignIndex:
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        status:
+          type: string
+        user_id:
+          type: integer
+        site_id:
+          type: integer
+        created_at:
+          type: string
+          format: date
+        updated_at:
+          type: string
+          format: date
+  campaignShow:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      status:
+        type: string
+      user_id:
+        type: integer
+      site_id:
+        type: integer
+      created_at:
+        type: string
+        format: date
+      updated_at:
+        type: string
+        format: date
+  constructorIndex:
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+  constructorShow:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+  materialIndex:
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+        has_electro:
+          type: boolean
+        created_year:
+          type: integer
+        status:
+          type: boolean
+        site_id:
+          type: integer
+  materialShow:
+    type: object
+    properties:
+      id:
+        type: integer
+      has_electro:
+        type: boolean
+      created_year:
+        type: integer
+      status:
+        type: boolean
+      site_id:
+        type: integer
+  modelsIndex:
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        status:
+          type: string
+        constructor_id:
+          type: integer
+        type_id:
+          type: integer
+        created_at:
+          type: string
+          format: date
+        updated_at:
+          type: string
+          format: date
+  modelsShow:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      status:
+        type: string
+      constructor_id:
+        type: integer
+      type_id:
+        type: integer
+      created_at:
+        type: string
+        format: date
+      updated_at:
+        type: string
+        format: date
+  sitesIndex:
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        number:
+          type: integer
+        adress_comp:
+          type: string
+        adress:
+          type: string
+        zip_code:
+          type: integer
+        city:
+          type: string
+  sitesShow:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      number:
+        type: integer
+      adress_comp:
+        type: string
+      adress:
+        type: string
+      zip_code:
+        type: integer
+      city:
+        type: string
+  typesIndex:
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        domain:
+          type: string
+  typesShow:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      domain:
+        type: string
+  adminsIndex:
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        role_id:
+          type: integer

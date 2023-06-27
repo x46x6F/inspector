@@ -42,14 +42,14 @@ class Piece extends Model
     public function campaigns(): BelongsToMany
     {
         return $this->belongsToMany(Campaign::class, 'audit', 'piece_id', 'campaign_id')->withPivot([
-           'audit',
-           'presence',
-           'functional',
-           'month',
-           'usury',
-           'change',
-           'complement',
-           'recommended',
+            'audit',
+            'presence',
+            'functional',
+            'month',
+            'usury',
+            'change',
+            'complement',
+            'recommended',
         ]);
     }
 
@@ -60,8 +60,8 @@ class Piece extends Model
      * @return HasMany
      */
 
-     public function audits(): HasMany
-     {
-         return $this->hasMany(Audit::class);
-     }
+    public function audits(): HasMany
+    {
+        return $this->hasMany(Audit::class);
+    }
 }

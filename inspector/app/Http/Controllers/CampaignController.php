@@ -24,7 +24,7 @@ class CampaignController extends Controller
      */
     public function create(): \Inertia\Response
     {
-        return Inertia::render('campaign/Create');
+        return Inertia::render('Campaign/Create');
     }
 
     /**

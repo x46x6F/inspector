@@ -11,6 +11,7 @@ const page = usePage()
 
 const props = defineProps<{
   pieces: Array<any>,
+  existingPieces?: number
 }>()
 
 const head =
@@ -37,7 +38,7 @@ const closeModal = () => {
 const watcher = (search) => {
 
   router.get(
-    "/pieces",
+    "/models?type=pieces",
     { search: search },
     { preserveState: true, replace: true }
   )
@@ -49,7 +50,7 @@ const form = useForm({
 
 const sendFile = e => {
   form.file = e.target.files[0]
-  form.post(route('pieces.store'))
+  form.post(route('models.store'))
 }
 </script>
 
@@ -72,6 +73,9 @@ const sendFile = e => {
       <h2 @click="closeModal">&times;</h2>
       <h1>{{ piece.name }}</h1>
     </Modal>
+    <div v-if="existingPieces > 0">
+      Erreur
+    </div>
   </Layout>
 </template>
 

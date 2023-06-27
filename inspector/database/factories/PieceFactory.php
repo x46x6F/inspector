@@ -19,7 +19,6 @@ class PieceFactory extends Factory
     {
         return [
             'creation_year' => fake()->numberBetween(1980, 2023),
-            'has_electro' => fake()->boolean(),
             'status' => fake()->boolean(),
             'material_id' => fake()->numberBetween(1, 100),
             'model_id' => collect(Model::all()->pluck('id'))->random(),

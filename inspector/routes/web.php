@@ -68,7 +68,9 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('materials', MaterialController::class);
 
-    Route::resource('models', ModelController::class);
+    Route::resource('models', ModelController::class)->parameters([
+        'models' => 'type',
+    ]);
 
     Route::resource('roles', RoleController::class);
 

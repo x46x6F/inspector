@@ -14,14 +14,9 @@ class PieceController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): \Inertia\Response
+    public function index()
     {
-        return Inertia::render('Pieces', [
-            'pieces' => Piece::query()
-                ->when(Request()->input('search'), function ($query, $search) {
-                    $query->where('name', 'like', '%' . $search . '%');
-                })->with(['material', 'campaigns', 'model'])->get(),
-        ]);
+        // 
     }
 
     /**
@@ -40,38 +35,50 @@ class PieceController extends Controller
         /**
          * 0 constructor_id
          * 1 model_id
-         * 2 model_name 
+         * 2 model_name
          * 3 type_id
          * 4 creation_year
          * 5 has_electro
          * 6 status
          */
 
-         $validated = $request->validate([
-            'file' => 'required | file | mimes : csv'
-        ]);
+        if ($request->hasFile('file')) {
+            $path = '/files';
+            $file = $request->file('file')->getClientOriginalName();
+            $request->file('file')->move(public_path($path), $file);
 
-        $csvFile = fopen(base_path($validated['file']), "r");
-        $firstline = true;
+            $csvFile = fopen(base_path("public/files/" . $file), "r");
+            $firstline = true;
 
-        while (($data = fgetcsv($csvFile, 10240, ",")) !== FALSE) {
-            if (!$firstline) {
-               
-                // $pieces = Piece::firstOrCreate([
-                //     'constructor_id' => $data[0],
-                //     'model_id' => $data[1],
-                //     'model_name' => $data[2],
-                //     'type_id'=> $data[3],
-                //     'creation_year'=> $data[4],
-                //     'has_electro'=> $data[5],
-                //     'status'=> $data[6]
-                // ]);
+            // ! Pas plus de 6 tours de boucles maximum
+            while (($data = fgetcsv($csvFile, 10240, ",")) !== FALSE) {
+                if (!$firstline) {
+                    DB::insert(
+                        'INSERT INTO csv_pieces(constructor_id, model_id, model_name, type_id, creation_year, has_electro, status) VALUES (:constructor_id, :model_id, :model_name, :type_id, :creation_year, :has_electro, :status)',
+                        [
+                            'constructor_id' => $data[0],
+                            'model_id' => $data[1],
+                            'model_name' => $data[2],
+                            'type_id' => $data[3],
+                            'creation_year' => $data[4],
+                            'has_electro' => $data[5],
+                            'status' => $data[6] == 'active' ? 1 : 0
+                        ]
+                    );
+                    if (Piece::where('name', '=', )) {
+                        # code...
+                    }
+                }
 
-                return $this->index();
+                $firstline = false;
             }
-
-            $firstline = false;
         }
+        if (File::exists(public_path('files/' . $file))) {
+            File::delete(public_path('files/' . $file));
+        }
+
+
+        return $this->index();
     }
 
     /**

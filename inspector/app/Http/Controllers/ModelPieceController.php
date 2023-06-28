@@ -15,7 +15,7 @@ class ModelPieceController extends Controller
      */
     public function index($existingPieces = null)
     {
-        return Inertia::render('Pieces', [
+        return Inertia::render('Model/Piece/Index', [
             'pieces' => Model::query()
                 ->when(Request()->input('search'), function ($query, $search) {
                     $query->where('name', 'like', '%' . $search . '%');

@@ -6,7 +6,6 @@ const page = usePage()
 
 
 const canViewDashboard = computed(() => {
-  // return page.props.auth?.user.canViewDashboard
   return page.props.auth?.user.canViewDashboard
 })
 </script>

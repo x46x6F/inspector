@@ -18,9 +18,9 @@ const props = defineProps<{
 
 const head =
 {
-  material_id: 'Matériel',
+  name: 'Modèle',
   creation_year: 'Année',
-  model_id: 'Modèle'
+  compose_id: 'Matériel',
 }
 
 const modal = ref(false)

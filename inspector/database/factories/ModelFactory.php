@@ -25,7 +25,7 @@ class ModelFactory extends Factory
             'creation_year' => fake()->numberBetween(1980, 2023),
             'constructor_id' => fake()->numberBetween(0, 100),
             'type_id' => fake()->numberBetween(0, 100),
-            'compose_id' => fake()->optional()
+            'compose_id' => fake()->optional()->numberBetween(1, 100)
         ];
     }
 }

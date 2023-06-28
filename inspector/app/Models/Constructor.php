@@ -11,6 +11,8 @@ class Constructor extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     /**
      * 
      * Get the model from a constructor

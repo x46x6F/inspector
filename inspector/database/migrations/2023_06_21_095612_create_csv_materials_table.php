@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('site_id');
             $table->string('piece_id');
             $table->string('model_name');
+            $table->string('model_id');
             $table->integer('creation_year');
             $table->boolean('has_electro');
             $table->boolean('status');

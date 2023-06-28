@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import DynamicTable from '@/Components/DynamicTable.vue';
+import OptionBar from '@/Components/OptionBar.vue';
 import SearchBar from '@/Components/SearchBar.vue';
 import UploadButton from '@/Components/UploadButton.vue';
 import Modal from '@/Components/Modal.vue';
@@ -18,7 +19,6 @@ const props = defineProps<{
 const head =
 {
   material_id: 'Matériel',
-  name: 'Nom',
   creation_year: 'Année',
   model_id: 'Modèle'
 }
@@ -68,14 +68,13 @@ const closeError = () => {
 
     <h1>Référentiel Pièces</h1>
 
-    <div class="option">
-      <!-- <UploadButton  v-if="isSuperAdmin"/> -->
+    <OptionBar>
       <UploadButton v-if="page.props.auth?.user.canImportData" @change="sendFile" />
       <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert" v-if="$page.props.flash.success">
         <p>{{ $page.props.flash.success }}</p>
       </div>
       <SearchBar @write="watcher" />
-    </div>
+    </OptionBar>
 
     <DynamicTable :headers="head" :data="props.pieces" @select="openModal" />
 

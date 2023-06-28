@@ -10,6 +10,8 @@ class Site extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     /**
      * 
      * Get material from site

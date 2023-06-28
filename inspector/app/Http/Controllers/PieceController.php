@@ -16,7 +16,7 @@ class PieceController extends Controller
      */
     public function index()
     {
-        // 
+        //
     }
 
     /**
@@ -40,7 +40,7 @@ class PieceController extends Controller
      */
     public function show(Piece $piece): \Inertia\Response
     {
-        return Inertia::render('PieceDetails', ['piece' => $piece]);
+        return Inertia::render('Piece/Details', ['piece' => $piece]);
     }
 
     /**

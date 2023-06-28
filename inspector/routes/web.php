@@ -5,6 +5,8 @@ use App\Http\Controllers\CampaignController;
 use App\Http\Controllers\ConstructorController;
 use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\ModelController;
+use App\Http\Controllers\ModelMaterialController;
+use App\Http\Controllers\ModelPieceController;
 use App\Http\Controllers\PieceController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
@@ -66,10 +68,6 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('materials', MaterialController::class);
 
-    Route::resource('models', ModelController::class)->parameters([
-        'models' => 'type',
-    ]);
-
     Route::resource('roles', RoleController::class);
 
     Route::resource('sites', SiteController::class);
@@ -77,6 +75,13 @@ Route::middleware('auth')->group(function () {
     Route::resource('types', TypeController::class);
 
     Route::resource('audits', AuditController::class);
+
+    Route::prefix('models')->name('models.')->group(function () {
+        Route::resource('/pieces', ModelPieceController::class);
+        Route::resource('/materials', ModelMaterialController::class);
+    });
+
+    Route::post('models/pieces/update', [ModelPieceController::class, 'forceUpdate'])->name('models.pieces.forceUpdate');
 });
 
 require __DIR__ . '/auth.php';

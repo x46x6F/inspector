@@ -6,6 +6,7 @@ import Modal from '@/Components/Modal.vue';
 import Layout from '@/Layouts/Layout.vue';
 import { Head, router, usePage, useForm } from '@inertiajs/vue3';
 import { ref, watch, } from 'vue';
+import { computed } from 'vue';
 
 const page = usePage()
 
@@ -23,6 +24,8 @@ const head =
 }
 
 const modal = ref(false)
+const errors = computed(() => props.existingPieces > 0)
+const showModal = ref(true);
 
 let piece: any;
 
@@ -38,7 +41,7 @@ const closeModal = () => {
 const watcher = (search) => {
 
   router.get(
-    "/models?type=pieces",
+    "/models/pieces",
     { search: search },
     { preserveState: true, replace: true }
   )
@@ -50,7 +53,11 @@ const form = useForm({
 
 const sendFile = e => {
   form.file = e.target.files[0]
-  form.post(route('models.store'))
+  form.post(route('models.pieces.store'))
+}
+
+const closeError = () => {
+  showModal.value = false
 }
 </script>
 
@@ -64,6 +71,9 @@ const sendFile = e => {
     <div class="option">
       <!-- <UploadButton  v-if="isSuperAdmin"/> -->
       <UploadButton v-if="page.props.auth?.user.canImportData" @change="sendFile" />
+      <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert" v-if="$page.props.flash.success">
+        <p>{{ $page.props.flash.success }}</p>
+      </div>
       <SearchBar @write="watcher" />
     </div>
 
@@ -73,9 +83,11 @@ const sendFile = e => {
       <h2 @click="closeModal">&times;</h2>
       <h1>{{ piece.name }}</h1>
     </Modal>
-    <div v-if="existingPieces > 0">
-      Erreur
-    </div>
+    <Modal :show="errors && showModal" @close="closeError">
+      <p>Il y a {{ existingPieces }} pièces déjà existantes dans la base. Voulez vous tout mettre à jour ?</p>
+      <button @click="closeError">Non</button>
+      <button @click="router.post(route('models.pieces.forceUpdate'))">Oui</button>
+    </Modal>
   </Layout>
 </template>
 

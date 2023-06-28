@@ -23,8 +23,8 @@ const canViewDashboard = computed(() => {
     </div>
     <div class="nav">
       <Link href="/campaigns" :class="{ 'active': $page.url.includes('/campaigns') }">Campagnes</Link>
-      <Link href="/models?type=pieces" :class="{ 'active': $page.url.includes('/models?type=pieces') }">Référentiel pièces</Link>
-      <Link href="/models?type=materials" :class="{ 'active': $page.url.includes('/models?type=materials') }">Référentiel matériels</Link>
+      <Link href="/models/pieces" :class="{ 'active': $page.url.includes('/models/pieces') }">Référentiel pièces</Link>
+      <Link href="/models/materials" :class="{ 'active': $page.url.includes('/models/materials') }">Référentiel matériels</Link>
       <Link href="/dash" :class="{ 'active': $page.url.includes('/dash') }" v-if="canViewDashboard">Qualité & sécurité</Link>
       <Link class="unauthorized" href="#" v-else>Qualité & sécurité</Link>
     </div>

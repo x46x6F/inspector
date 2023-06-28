@@ -4,17 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Model;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Route;
 use Inertia\Inertia;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\File;
 
-class ModelController extends Controller
+class ModelMaterialController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index($existingPieces = null)
+    public function index($existingMaterials = null)
     {
         //
     }
@@ -40,7 +37,7 @@ class ModelController extends Controller
      */
     public function show(Model $model)
     {
-        // 
+        //
     }
 
     /**

@@ -13,10 +13,9 @@ return new class extends Migration
     {
         Schema::create('csv_materials', function (Blueprint $table) {
             $table->integer('constructor_id');
-            $table->string('model_id');
             $table->integer('type_id');
             $table->integer('site_id');
-            $table->integer('piece_id');
+            $table->string('piece_id');
             $table->string('model_name');
             $table->integer('creation_year');
             $table->boolean('has_electro');

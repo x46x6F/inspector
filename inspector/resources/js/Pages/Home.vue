@@ -19,10 +19,10 @@ import { Head, Link, router } from '@inertiajs/vue3';
         <PrimaryButton @click="router.visit(route('campaigns.index'))">
           <span>C</span>ampagnes
         </PrimaryButton>
-        <PrimaryButton @click="router.visit(route('pieces.index'))">
+        <PrimaryButton @click="router.visit(route('models.pieces.index'))">
           <span>R</span>éférentiel &nbsp;<span>P</span>ièces
         </PrimaryButton>
-        <PrimaryButton @click="router.visit(route('materials.index'))">
+        <PrimaryButton @click="router.visit(route('models.materials.index'))">
           <span>R</span>éférentiel &nbsp;<span>M</span>atériels
         </PrimaryButton>
         <PrimaryButton @click="router.visit(route('dash.index'))">

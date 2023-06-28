@@ -40,10 +40,15 @@ class HandleInertiaRequests extends Middleware
                     'location' => $request->url(),
                 ]);
             },
-        ]; 
-        if($request->user()) {
+            'flash' => function () use ($request) {
+                return [
+                    'success' => $request->session()->get('success'),
+                ];
+            },
+        ];
+        if ($request->user()) {
             $user = $request->user()->toArray();
-            
+
             $user['canViewDashboard'] =  $request->user()->canViewDashboard();
             $user['isSuperAdmin'] =  $request->user()->isSuperAdmin();
             $user['canImportData'] = $request->user()->canImportData();

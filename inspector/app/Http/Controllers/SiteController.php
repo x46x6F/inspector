@@ -13,7 +13,7 @@ class SiteController extends Controller
      */
     public function index(): \Inertia\Response
     {
-        $site = Site::with(['materials', 'compaigns'])->get();
+        $site = Site::with(['materials', 'campaigns'])->get();
         return Inertia::render('Site/Index', ['site' => $site]);
     }
 

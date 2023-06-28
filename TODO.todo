@@ -1,0 +1,3 @@
+[ ] Créer un TRIGGER pour entrée automatiquement les pièces d'un site à la création d'une campagne;
+[ ] Créer un TRIGGER pour rentrer automatiquement les pièces d'un matériel que l'on vient d'ajouter à un site;
+[ ]  Créer un TRIGGER pour les campagnes: faire en sorte de vérifier le role de l'utilisateur par rapport à l'id qu'on rentre (créateur ou auditeur);

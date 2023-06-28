@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Campaign;
+use App\Models\Site;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -23,7 +24,7 @@ class CampaignController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Campaign/Create');
+        return Inertia::render('Campaign/Create', ['sites' => Site::with('materials')->get()]);
     }
 
     /**

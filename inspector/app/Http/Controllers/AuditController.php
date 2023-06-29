@@ -18,7 +18,7 @@ class AuditController extends Controller
     public function index(): \Inertia\Response
     {
         $audits = Audit::with(['piece', 'campaigns'])->get();
-        return Inertia::render('Audit/Index', ['audits' => $audits]);  
+        return Inertia::render('Audit/Index', ['audits' => $audits]);
     }
 
     /**
@@ -35,18 +35,23 @@ class AuditController extends Controller
     public function store(Request $request): \Illuminate\Http\RedirectResponse
     {
         $validated = $request->validate([
+            'campaign_id' => 'required',
+            'piece_id' => 'required',
             'audit' => 'required | boolean',
-            'presence'=> 'required | boolean',
+            'presence' => 'required | boolean',
             'functional' => 'required | boolean',
             'month' => 'required | max:2',
             'usury' => 'required | boolean',
             'change' => 'required | boolean',
             'complement' => 'required | boolean',
-            'recommended'=> 'required | boolean'
+            'recommended' => 'required | boolean'
         ]);
 
         $audit = new Audit();
-        $audit->word = $validated['audit'];
+
+        $audit->campaign_id = $validated['campaign_id'];
+        $audit->piece_id = $validated['piece_id'];
+        $audit->audit = $validated['audit'];
         $audit->presence = $validated['presence'];
         $audit->functional = $validated['functional'];
         $audit->month = $validated['month'];
@@ -54,6 +59,7 @@ class AuditController extends Controller
         $audit->change = $validated['change'];
         $audit->complement = $validated['complement'];
         $audit->recommended = $validated['recommended'];
+
         $audit->save();
 
         return to_route('audit.index');
@@ -81,16 +87,20 @@ class AuditController extends Controller
     public function update(Request $request, Audit $audit): \Illuminate\Http\RedirectResponse
     {
         $validated = $request->validate([
+            'campaign_id' => 'required',
+            'piece_id' => 'required',
             'audit' => 'required | boolean',
-            'presence'=> 'required | boolean',
+            'presence' => 'required | boolean',
             'functional' => 'required | boolean',
             'month' => 'required | max:2',
             'usury' => 'required | boolean',
             'change' => 'required | boolean',
             'complement' => 'required | boolean',
-            'recommended'=> 'required | boolean'
+            'recommended' => 'required | boolean'
         ]);
 
+        $audit->campaign_id = $validated['campaign_id'];
+        $audit->piece_id = $validated['piece_id'];
         $audit->word = $validated['audit'];
         $audit->presence = $validated['presence'];
         $audit->functional = $validated['functional'];
@@ -99,8 +109,8 @@ class AuditController extends Controller
         $audit->change = $validated['change'];
         $audit->complement = $validated['complement'];
         $audit->recommended = $validated['recommended'];
+        
         $audit->save();
-
 
         return to_route('audit.index');
     }

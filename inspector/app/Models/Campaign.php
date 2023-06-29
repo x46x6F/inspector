@@ -18,10 +18,20 @@ class Campaign extends Model
      * 
      * @return BelongsTo
      */
-
-    public function user(): BelongsTo
+    public function creator(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'creator_id');
+    }
+
+    /**
+     * 
+     * Récupère l'utilisateur qui devra auditer
+     * 
+     * @return BelongsTo
+     */
+    public function auditor(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'auditor_id');
     }
 
     /**
@@ -54,7 +64,7 @@ class Campaign extends Model
             'change',
             'complement',
             'recommended',
-         ]);
+        ]);
     }
 
     /**
@@ -69,15 +79,15 @@ class Campaign extends Model
         ]);
     }
 
-     /**
+    /**
      * 
      * Get the audit of the campaign
      *
      * @return HasMany
      */
 
-     public function audits(): HasMany
-     {
-         return $this->hasMany(Audit::class);
-     }
+    public function audits(): HasMany
+    {
+        return $this->hasMany(Audit::class);
+    }
 }

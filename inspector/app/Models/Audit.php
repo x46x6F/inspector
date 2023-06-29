@@ -21,7 +21,7 @@ class Audit extends Pivot
 
     public function piece(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Piece::class);
     }
 
     /**

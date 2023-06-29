@@ -17,7 +17,7 @@ class AuditController extends Controller
      */
     public function index(): \Inertia\Response
     {
-        $audits = Audit::with(['user', 'campaigns'])->get();
+        $audits = Audit::with(['piece', 'campaigns'])->get();
         return Inertia::render('Audit/Index', ['audits' => $audits]);  
     }
 

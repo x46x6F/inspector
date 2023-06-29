@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Model;
+use App\Policies\ModelPolicy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
@@ -37,6 +38,7 @@ class ModelPieceController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create', ModelPolicy::class);
         /**
          * 0 constructor_id
          * 1 model_id
@@ -81,13 +83,11 @@ class ModelPieceController extends Controller
 
         $modelIds = DB::table('csv_pieces')->pluck('model_id')->toArray();
         $existingPieces = Model::whereIn('id', $modelIds)->count();
-
+        // dd($existingPieces);
         if ($existingPieces > 0) {
             return $this->index($existingPieces);
         } else {
-            DB::insert('INSERT INTO models(id, name, creation_year, has_electro, status, constructor_id, type_id) (SELECT model_id as id, model_name as name, creation_year, has_electro, status, constructor_id, type_id FROM csv_pieces WHERE model_id NOT IN (SELECT id FROM models))');
-
-            return to_route('models.pieces.index')->with('success', 'Le fichier a été importé avec succés');
+            return to_route('models.pieces.index')->with('success', 'Le fichier a été importé avec succés ! Importez le fichier CSV pour les matériels associées pour afficher les pièces.');
         }
     }
 
@@ -125,6 +125,7 @@ class ModelPieceController extends Controller
 
     public function forceUpdate()
     {
+        // ! À revoir
         DB::table('models')
             ->join('csv_pieces', 'models.id', '=', 'csv_pieces.model_id')
             ->update([

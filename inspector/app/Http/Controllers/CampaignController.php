@@ -15,7 +15,7 @@ class CampaignController extends Controller
      */
     public function index() : \Inertia\Response
     {
-        $campaigns = Campaign::with(['user', 'sites', 'pieces'])->get();
+        $campaigns = Campaign::with(['creator', 'auditor', 'sites', 'pieces'])->get();
         return Inertia::render('Campaign/Index', ['campaigns' => $campaigns]);
     }
 

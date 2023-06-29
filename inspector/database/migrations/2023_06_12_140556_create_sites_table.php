@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer('number');
-            $table->string('adress_comp');
-            $table->string('adress');
+            $table->string('address_comp')->nullable();
+            $table->string('address');
             $table->integer('zip_code');
             $table->string('city');
         });

@@ -2,7 +2,7 @@
 import Layout from '@/Layouts/Layout.vue';
 import DynamicTable from '@/Components/DynamicTable.vue';
 import TitlePage from '@/Components/TitlePage.vue';
-import { Head, router, usePage } from '@inertiajs/vue3';
+import { Head, usePage } from '@inertiajs/vue3';
 
 const page = usePage()
 

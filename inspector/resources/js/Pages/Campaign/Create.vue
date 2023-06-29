@@ -34,7 +34,7 @@ const form = useForm({
       Créer une campagne
     </TitlePage>
 
-    <form action="#">
+    <form method="post">
 
       <InputLabel for="name" value="Nom" />
 

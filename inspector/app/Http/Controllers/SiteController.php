@@ -13,8 +13,8 @@ class SiteController extends Controller
      */
     public function index(): \Inertia\Response
     {
-        $site = Site::with(['materials', 'campaigns'])->get();
-        return Inertia::render('Site/Index', ['site' => $site]);
+        $sites = Site::with(['materials', 'campaigns'])->get();
+        return Inertia::render('Site/Index', ['sites' => $sites]);
     }
 
     /**
@@ -22,7 +22,7 @@ class SiteController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Site/Create');
     }
 
     /**
@@ -30,7 +30,27 @@ class SiteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required',
+            'number' => 'required',
+            'address' => 'required',
+            'address_comp' => 'nullable',
+            'zip_code' => 'required',
+            'city' => 'required',
+        ]);
+
+        $site = new Site();
+
+        $site->name = $validated['name'];
+        $site->number = $validated['number'];
+        $site->address = $validated['address'];
+        $site->address_comp = $validated['address_comp'];
+        $site->zip_code = $validated['zip_code'];
+        $site->city = $validated['city'];
+
+        $site->save();
+
+        return $this->index();
     }
 
     /**

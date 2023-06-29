@@ -19,8 +19,8 @@ class SiteFactory extends Factory
         return [
             'name' => fake()->company(),
             'number' => fake()->numberBetween(0,100),
-            'adress' => fake()->address(),
-            'adress_comp' => fake()->address(),
+            'address' => fake()->address(),
+            'address_comp' => fake()->address(),
             'zip_code' => fake()->numberBetween(10000, 99999),
             'city' => fake()->city(),
         ];

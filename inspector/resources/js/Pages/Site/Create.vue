@@ -1,15 +1,18 @@
 <script setup lang="ts">
 import TitlePage from '@/Components/TitlePage.vue';
-import DynamicTable from '@/Components/DynamicTable.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import TextInput from '@/Components/TextInput.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import Layout from '@/Layouts/Layout.vue';
 import { Head, useForm } from '@inertiajs/vue3';
+import { ref } from 'vue'
 
-// const props = defineProps <{
-//   sites: Array<any>,
-// }>()
+const props = defineProps<{
+  materials: Array<any>,
+}>()
+
+// let materialsOnSite = ref([])
+const type = ref('')
 
 const form = useForm ({
   name:'',
@@ -18,7 +21,19 @@ const form = useForm ({
   address_comp: '',
   zip_code: '',
   city: '',
+  materials: []
 })
+
+const addMater = () => {
+  form.materials.push(type.value)
+  type.value = ''
+}
+
+const pop = value => {
+  const index = form.materials.indexOf(value)
+  form.materials.splice(index, 1)
+}
+
 </script>
 
 <template>
@@ -46,6 +61,25 @@ const form = useForm ({
       <InputLabel for="city" value="Ville"/>
       <TextInput id="city" type="text" v-model="form.city" required />
 
+      <!-- <InputLabel for="material" value="Matériel :" />
+      <select v-model="materialsOnSite" id="material" multiple>
+        <option v-for="material in materials" :key="material.id" :value="material.name">{{ material.name }}</option>
+      </select> -->
+
+      <InputLabel for="material" value="Matériel :" />
+      <TextInput v-model="type" list="list-material" id="datalist" />
+      <datalist id="list-material">
+        <option v-for="material in materials" :key="material.id" :value="`${material.id} - ${material.name}`">{{ material.name }}</option>
+      </datalist>
+      <button id="btn" @click="addMater" :disabled="type == ''">+</button>
+
+      <div class="list" v-if="form.materials.length > 0">
+        <div class="test" v-for="material in form.materials">
+          <article>{{ material }}</article>
+          <div class="material-symbols-outlined" @click="pop(material)">Delete</div>
+        </div>
+      </div>
+
       <PrimaryButton :class="{ 'opacity-25': form.processing }">
         Ajouter
       </PrimaryButton>
@@ -54,6 +88,52 @@ const form = useForm ({
 </template>
 
 <style scoped>
+.list {
+  margin: 2rem;
+}
+button:disabled {
+  border: 1px solid lightgrey;
+  color: lightgrey;
+}
+
+button:disabled:hover {
+  border: 1px solid lightgrey;
+  background-color: white;
+  outline: none;
+  color: lightgrey;
+  cursor: not-allowed;
+}
+#datalist {
+  border: 1px solid lightgrey;
+  height: 42px;
+}
+
+#btn {
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
+}
+button:hover {
+  background-color: var(--main-light);
+  border: 2px solid white;
+  outline: solid var(--main-lighten);
+  cursor: pointer;
+}
+.test {
+  display: flex;
+  /* background-color: var(--main-light); */
+  justify-content: space-between;
+  /* gap: 5px; */
+}
+.test div {
+  /* color: var(--main-lighten); */
+  cursor: pointer;
+}
+
+.test:nth-child(even) {
+  background-color: var(--main-light);
+}
 form {
   width: 100%;
   padding: 0 20rem 10rem;
@@ -67,5 +147,19 @@ label {
 
 input {
   margin-bottom: 1.2rem;
+}
+
+.material-symbols-outlined {
+  cursor: pointer;
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+
+.material-symbols-outlined:hover {
+  border-radius: 50%;
+  background-color: var(--main-lighten);
 }
 </style>

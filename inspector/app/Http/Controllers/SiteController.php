@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Material;
+use App\Models\Model;
 use App\Models\Site;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -22,7 +24,7 @@ class SiteController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Site/Create');
+        return Inertia::render('Site/Create', ['materials' => Model::whereNull('compose_id')->get()]);
     }
 
     /**

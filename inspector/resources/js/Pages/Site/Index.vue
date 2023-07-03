@@ -15,7 +15,7 @@ const props = defineProps<{
 
 const head = {
   name: 'Nom',
-  adress: 'Adresse',
+  address: 'Adresse',
   zip_code: 'Code Postal',
   city: 'Ville',
 }

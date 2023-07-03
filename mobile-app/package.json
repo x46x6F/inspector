@@ -6,10 +6,7 @@
   "author": "Flow <giraultflorian1@gmail.com>",
   "private": true,
   "scripts": {
-    "lint": "eslint --ext .js,.ts,.vue ./",
-    "test": "echo \"No test specified\" && exit 0",
-    "dev": "quasar dev",
-    "build": "quasar build"
+    "icons": "icongenie generate -i AppIcon.png --skip-trim"
   },
   "dependencies": {
     "@quasar/extras": "^1.16.4",
@@ -25,6 +22,7 @@
     "@typescript-eslint/eslint-plugin": "^5.10.0",
     "@typescript-eslint/parser": "^5.10.0",
     "autoprefixer": "^10.4.2",
+    "electron": "^25.2.0",
     "eslint": "^8.10.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.19.1",

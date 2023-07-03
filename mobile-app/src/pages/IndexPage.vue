@@ -1,4 +1,5 @@
 <template>
+  <h1>Coucou les animals</h1>
   <q-page class="row items-center justify-evenly">
     <example-component
       title="Example component"

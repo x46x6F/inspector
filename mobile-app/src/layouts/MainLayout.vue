@@ -30,7 +30,9 @@
         >
           Essential Links
         </q-item-label>
-
+        <q-tabs>
+          <q-route-tab to="/test">Test</q-route-tab>
+        </q-tabs>
         <EssentialLink
           v-for="link in essentialLinks"
           :key="link.title"
@@ -50,6 +52,11 @@ import { ref } from 'vue'
 import EssentialLink, { EssentialLinkProps } from 'components/EssentialLink.vue'
 
 const essentialLinks: EssentialLinkProps[] = [
+  {
+    title: 'test',
+    caption: 'page test',
+    link: '/test'
+  },
   {
     title: 'Docs',
     caption: 'quasar.dev',

@@ -13,6 +13,16 @@ const routes: RouteRecordRaw[] = [
     children: [{ path: '', component: () => import('pages/TestPage.vue') }]
   },
 
+  {
+    path: '/loading',
+    children: [{ path: '', component: () => import('pages/LoadingPage.vue') }]
+  },
+
+  {
+    path: '/home',
+    children: [{ path: '', component: () => import('pages/HomePage.vue') }]
+  },
+
   // Always leave this as last one,
   // but you can also remove it
   {

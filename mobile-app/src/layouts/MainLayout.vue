@@ -31,6 +31,12 @@
           Essential Links
         </q-item-label>
         <q-tabs>
+          <q-route-tab to="/home">Accueil</q-route-tab>
+        </q-tabs>
+        <q-tabs>
+          <q-route-tab to="/loading">Loading page</q-route-tab>
+        </q-tabs>
+        <q-tabs>
           <q-route-tab to="/test">Test</q-route-tab>
         </q-tabs>
         <EssentialLink

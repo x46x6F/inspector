@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Audit;
+use App\Models\Campaign;
 use App\Models\Constructor;
 use App\Models\Model;
 use App\Models\Piece;
@@ -29,5 +31,7 @@ class DatabaseSeeder extends Seeder
         Piece::factory(50)->create();
         Site::factory(10)->create();
         User::factory(10)->create();
+        Campaign::factory(15)->create();
+        Audit::factory(10)->create();
     }
 }

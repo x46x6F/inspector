@@ -4,6 +4,8 @@ info:
   title: 1nspect0r API Routes
   description: Illustration de toutes les routes API
 tags:
+  - name: Auth
+    description: Routes pour l'authentification
   - name: Audits
     description: Routes pour les audits
 
@@ -38,7 +40,6 @@ paths:
         - "Audits"
       summary: Modifie un audit
       requestBody:
-        description: Je sais pas encore
         required: true
         content:
           application/json:
@@ -51,6 +52,28 @@ paths:
             application/json:
               schema:
                 $ref: "#/definitions/auditShow"
+  /api/login:
+    post:
+      tags:
+        - "Auth"
+      summary: Crée une session
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/login"
+      responses:
+        200:
+          description: OK
+  /api/logout:
+    post:
+      tags:
+        - "Auth"
+      summary: Supprime la session en cours
+      responses:
+        200:
+          description: OK
   
 
 definitions:
@@ -192,4 +215,13 @@ definitions:
       complement:
         type: boolean
       recommended:
+        type: boolean
+  login:
+    type: object
+    properties:
+      email:
+        type: string
+      password: 
+        type: string
+      remember: 
         type: boolean

@@ -31,6 +31,9 @@
           Essential Links
         </q-item-label>
         <q-tabs>
+          <q-route-tab to="/campaigns">Campagnes</q-route-tab>
+        </q-tabs>
+        <q-tabs>
           <q-route-tab to="/home">Accueil</q-route-tab>
         </q-tabs>
         <q-tabs>

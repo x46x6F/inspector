@@ -6,7 +6,7 @@ import UploadButton from '@/Components/UploadButton.vue';
 import Modal from '@/Components/Modal.vue';
 import Layout from '@/Layouts/Layout.vue';
 import { Head, router, usePage, useForm } from '@inertiajs/vue3';
-import { ref, watch, } from 'vue';
+import { ref, watch } from 'vue';
 import { computed } from 'vue';
 
 const page = usePage()

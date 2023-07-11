@@ -1,35 +1,36 @@
 <template>
-  <main>
-    <LogoComponent />
+  <div>
+    <h1>My App</h1>
+    <nav>
+      <router-link to="/">Home</router-link>
+      <router-link to="/camp">About</router-link>
+    </nav>
+    <router-view></router-view>
+  </div>
+  <div>
+    <h1>Login</h1>
     <form @submit="login">
-      <label for="email">Nom :</label>
-      <input type="email" name="email" id="email" v-model="email">
-      <label for="pwd">Mot de passe :</label>
-      <input type="password" name="pwd" id="pwd" v-model="password">
-      <button type="submit">Se connecter</button>
+      <div>
+        <label for="name">Username</label>
+        <input type="text" id="name" v-model="name" />
+      </div>
+      <div>
+        <label for="password">Password</label>
+        <input type="password" id="password" v-model="password" />
+      </div>
+      <button type="submit">Login</button>
     </form>
-  </main>
+  </div>
 </template>
 
-<script setup lang="ts">
-import LogoComponent from '../components/LogoComponent.vue'
-// import { onMounted } from 'vue'
-
-// const submit = () => {
-//   fetch('http://localhost:8000/api/login', {
-//     method: 'POST',
-//     body: JSON.stringify({ login: 'admin@admin.fr', password: 'password', remeber: false })
-//   })
-// }
-
-// onMounted(submit)
+<script setup>
 import { ref } from 'vue'
 
-const email = ref('')
+const name = ref('')
 const password = ref('')
 const authToken = ref(null)
 
-const login = async (event: any) => {
+const login = async (event) => {
   event.preventDefault()
 
   try {
@@ -37,11 +38,11 @@ const login = async (event: any) => {
       method: 'POST',
       credentials: 'include',
       headers: {
-        'Content-Type': 'application/json'
-        // 'Accept': 'application/json'
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
       },
       body: JSON.stringify({
-        email: email.value,
+        name: name.value,
         password: password.value
       })
     })
@@ -67,7 +68,7 @@ const fetchData = async () => {
     const response = await fetch('http://localhost:8000/sanctum/csrf-cookie', {
       method: 'GET',
       headers: {
-        // 'Accept': 'application/json',
+        Accept: 'application/json'
       }
     })
 
@@ -88,49 +89,5 @@ fetchData()
 </script>
 
 <style scoped>
-img {
-  position: absolute;
-  top: 30vh;
-  margin-bottom: 1.5rem;
-  animation: anim1 5s forwards;
-}
-
-main {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-form {
-  position: absolute;
-  bottom: 30vh;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  animation: anim 5s forwards;
-}
-
-@keyframes anim {
-  0% {
-    position: absolute;
-  }
-
-  100% {
-    position: absolute;
-  }
-}
-
-@keyframes anim1 {
-  0% {
-    position: absolute;
-  }
-
-  100% {
-    position: absolute;
-    top: 30vh;
-  }
-}
+/* Votre style CSS ici */
 </style>

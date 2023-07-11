@@ -25,7 +25,7 @@
             <div class="bar"></div>
           </div>
         </div>
-        <div class="gear four large">
+        <!-- <div class="gear four large">
           <div class="gear-inner">
             <div class="bar"></div>
             <div class="bar"></div>
@@ -34,7 +34,7 @@
             <div class="bar"></div>
             <div class="bar"></div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -80,17 +80,17 @@ img {
 .gearbox {
   /* background: #111; */
   height: 12rem;
-  width: 16rem;
+  width: 8rem;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   overflow: hidden;
   border-radius: 6px;
   /* box-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 0.1); */
 }
 
 .gearbox .overlay {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   border-radius: 6px;
   content: "";
   position: absolute;
@@ -144,10 +144,10 @@ img {
   left: 10px;
 }
 
-.gear.four {
+/* .gear.four {
   top: 13px;
   left: 128px;
-}
+} */
 
 .gear:after {
   content: "";

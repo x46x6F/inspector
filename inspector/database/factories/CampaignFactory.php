@@ -26,7 +26,7 @@ class CampaignFactory extends Factory
             'end_date' => fake()->date(),
             'creator_id' => collect(User::where('role_id', Role::where('name', '=', 'Chef de projet')->pluck('id'))->pluck('id'))->random(),
             'auditor_id' => collect(User::where('role_id', Role::where('name', '=', 'Auditeur')->pluck('id'))->pluck('id'))->random(),
-            'site_id' => collect(Site::all()->pluck('id'))->random()
+            'site_id' => collect(Site::all()->pluck('id'))->random(),
         ];
     }
 }

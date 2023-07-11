@@ -228,3 +228,11 @@ Ref: models.id > models.compose_id
 ```
 
 ![MCD 1nspect0r](MERISE/1nspect0rMLD.png)
+
+## Lancer les serveurs
+
+- Mobile app
+```
+cd mobile-app
+npx quasar dev -m pwa
+```

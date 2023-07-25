@@ -13,16 +13,6 @@
 
 <script setup lang="ts">
 import LogoComponent from '../components/LogoComponent.vue'
-// import { onMounted } from 'vue'
-
-// const submit = () => {
-//   fetch('http://localhost:8000/api/login', {
-//     method: 'POST',
-//     body: JSON.stringify({ login: 'admin@admin.fr', password: 'password', remeber: false })
-//   })
-// }
-
-// onMounted(submit)
 import { ref } from 'vue'
 
 const email = ref('')

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="37.448" tests="1" failures="0">
+  <testsuite name="Root Suite" timestamp="2023-07-18T11:36:23" tests="0" file="tests\cypress\integration\register.cy.js" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="Register" timestamp="2023-07-18T11:36:28" tests="1" time="32.504" failures="0">
+    <testcase name="Register visits the app root url" time="20.177" classname="visits the app root url">
+    </testcase>
+  </testsuite>
+</testsuites>

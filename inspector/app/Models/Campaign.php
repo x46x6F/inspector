@@ -55,7 +55,7 @@ class Campaign extends Model
 
     public function pieces(): BelongsToMany
     {
-        return $this->belongsToMany(Campaign::class, 'audits', 'piece_id', 'campaign_id')->withPivot([
+        return $this->belongsToMany(Campaign::class, 'audit', 'piece_id', 'campaign_id')->withPivot([
             'audit',
             'presence',
             'functional',

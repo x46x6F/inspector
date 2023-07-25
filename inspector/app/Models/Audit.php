@@ -15,6 +15,8 @@ class Audit extends Pivot
 
     public $timestamps = false;
 
+    protected $table = 'audit';
+
     /**
      * Permet d'utiliser des clefs composées pour le save ou update 
      *

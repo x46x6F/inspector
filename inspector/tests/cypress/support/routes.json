@@ -119,6 +119,34 @@
       "POST"
     ]
   },
+  "logout": {
+    "name": "logout",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\Auth\\AuthenticatedSessionController@destroy",
+    "uri": "logout",
+    "method": [
+      "POST"
+    ]
+  },
+  "login.api": {
+    "name": "login.api",
+    "domain": null,
+    "action": "Closure",
+    "uri": "api/tokens/create",
+    "method": [
+      "POST"
+    ]
+  },
+  "dash.index": {
+    "name": "dash.index",
+    "domain": null,
+    "action": "Closure",
+    "uri": "dash",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
   "dashboard": {
     "name": "dashboard",
     "domain": null,
@@ -155,6 +183,773 @@
     "uri": "profile",
     "method": [
       "DELETE"
+    ]
+  },
+  "home.index": {
+    "name": "home.index",
+    "domain": null,
+    "action": "Closure",
+    "uri": "home",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "admin.index": {
+    "name": "admin.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\UserController@index",
+    "uri": "admin",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "admin.create": {
+    "name": "admin.create",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\UserController@create",
+    "uri": "admin/create",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "admin.store": {
+    "name": "admin.store",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\UserController@store",
+    "uri": "admin",
+    "method": [
+      "POST"
+    ]
+  },
+  "admin.show": {
+    "name": "admin.show",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\UserController@show",
+    "uri": "admin/{admin}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "admin.edit": {
+    "name": "admin.edit",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\UserController@edit",
+    "uri": "admin/{admin}/edit",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "admin.update": {
+    "name": "admin.update",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\UserController@update",
+    "uri": "admin/{admin}",
+    "method": [
+      "PUT",
+      "PATCH"
+    ]
+  },
+  "admin.destroy": {
+    "name": "admin.destroy",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\UserController@destroy",
+    "uri": "admin/{admin}",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "pieces.index": {
+    "name": "pieces.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\PieceController@index",
+    "uri": "pieces",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "pieces.create": {
+    "name": "pieces.create",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\PieceController@create",
+    "uri": "pieces/create",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "pieces.store": {
+    "name": "pieces.store",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\PieceController@store",
+    "uri": "pieces",
+    "method": [
+      "POST"
+    ]
+  },
+  "pieces.show": {
+    "name": "pieces.show",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\PieceController@show",
+    "uri": "pieces/{piece}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "pieces.edit": {
+    "name": "pieces.edit",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\PieceController@edit",
+    "uri": "pieces/{piece}/edit",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "pieces.update": {
+    "name": "pieces.update",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\PieceController@update",
+    "uri": "pieces/{piece}",
+    "method": [
+      "PUT",
+      "PATCH"
+    ]
+  },
+  "pieces.destroy": {
+    "name": "pieces.destroy",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\PieceController@destroy",
+    "uri": "pieces/{piece}",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "campaigns.index": {
+    "name": "campaigns.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\CampaignController@index",
+    "uri": "campaigns",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "campaigns.create": {
+    "name": "campaigns.create",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\CampaignController@create",
+    "uri": "campaigns/create",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "campaigns.store": {
+    "name": "campaigns.store",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\CampaignController@store",
+    "uri": "campaigns",
+    "method": [
+      "POST"
+    ]
+  },
+  "campaigns.show": {
+    "name": "campaigns.show",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\CampaignController@show",
+    "uri": "campaigns/{campaign}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "campaigns.edit": {
+    "name": "campaigns.edit",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\CampaignController@edit",
+    "uri": "campaigns/{campaign}/edit",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "campaigns.update": {
+    "name": "campaigns.update",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\CampaignController@update",
+    "uri": "campaigns/{campaign}",
+    "method": [
+      "PUT",
+      "PATCH"
+    ]
+  },
+  "campaigns.destroy": {
+    "name": "campaigns.destroy",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\CampaignController@destroy",
+    "uri": "campaigns/{campaign}",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "constructors.index": {
+    "name": "constructors.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ConstructorController@index",
+    "uri": "constructors",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "constructors.create": {
+    "name": "constructors.create",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ConstructorController@create",
+    "uri": "constructors/create",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "constructors.store": {
+    "name": "constructors.store",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ConstructorController@store",
+    "uri": "constructors",
+    "method": [
+      "POST"
+    ]
+  },
+  "constructors.show": {
+    "name": "constructors.show",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ConstructorController@show",
+    "uri": "constructors/{constructor}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "constructors.edit": {
+    "name": "constructors.edit",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ConstructorController@edit",
+    "uri": "constructors/{constructor}/edit",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "constructors.update": {
+    "name": "constructors.update",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ConstructorController@update",
+    "uri": "constructors/{constructor}",
+    "method": [
+      "PUT",
+      "PATCH"
+    ]
+  },
+  "constructors.destroy": {
+    "name": "constructors.destroy",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ConstructorController@destroy",
+    "uri": "constructors/{constructor}",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "materials.index": {
+    "name": "materials.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\MaterialController@index",
+    "uri": "materials",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "materials.create": {
+    "name": "materials.create",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\MaterialController@create",
+    "uri": "materials/create",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "materials.store": {
+    "name": "materials.store",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\MaterialController@store",
+    "uri": "materials",
+    "method": [
+      "POST"
+    ]
+  },
+  "materials.show": {
+    "name": "materials.show",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\MaterialController@show",
+    "uri": "materials/{material}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "materials.edit": {
+    "name": "materials.edit",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\MaterialController@edit",
+    "uri": "materials/{material}/edit",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "materials.update": {
+    "name": "materials.update",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\MaterialController@update",
+    "uri": "materials/{material}",
+    "method": [
+      "PUT",
+      "PATCH"
+    ]
+  },
+  "materials.destroy": {
+    "name": "materials.destroy",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\MaterialController@destroy",
+    "uri": "materials/{material}",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "roles.index": {
+    "name": "roles.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\RoleController@index",
+    "uri": "roles",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "roles.create": {
+    "name": "roles.create",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\RoleController@create",
+    "uri": "roles/create",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "roles.store": {
+    "name": "roles.store",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\RoleController@store",
+    "uri": "roles",
+    "method": [
+      "POST"
+    ]
+  },
+  "roles.show": {
+    "name": "roles.show",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\RoleController@show",
+    "uri": "roles/{role}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "roles.edit": {
+    "name": "roles.edit",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\RoleController@edit",
+    "uri": "roles/{role}/edit",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "roles.update": {
+    "name": "roles.update",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\RoleController@update",
+    "uri": "roles/{role}",
+    "method": [
+      "PUT",
+      "PATCH"
+    ]
+  },
+  "roles.destroy": {
+    "name": "roles.destroy",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\RoleController@destroy",
+    "uri": "roles/{role}",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "sites.index": {
+    "name": "sites.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\SiteController@index",
+    "uri": "sites",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "sites.create": {
+    "name": "sites.create",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\SiteController@create",
+    "uri": "sites/create",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "sites.store": {
+    "name": "sites.store",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\SiteController@store",
+    "uri": "sites",
+    "method": [
+      "POST"
+    ]
+  },
+  "sites.show": {
+    "name": "sites.show",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\SiteController@show",
+    "uri": "sites/{site}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "sites.edit": {
+    "name": "sites.edit",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\SiteController@edit",
+    "uri": "sites/{site}/edit",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "sites.update": {
+    "name": "sites.update",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\SiteController@update",
+    "uri": "sites/{site}",
+    "method": [
+      "PUT",
+      "PATCH"
+    ]
+  },
+  "sites.destroy": {
+    "name": "sites.destroy",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\SiteController@destroy",
+    "uri": "sites/{site}",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "types.index": {
+    "name": "types.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\TypeController@index",
+    "uri": "types",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "types.create": {
+    "name": "types.create",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\TypeController@create",
+    "uri": "types/create",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "types.store": {
+    "name": "types.store",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\TypeController@store",
+    "uri": "types",
+    "method": [
+      "POST"
+    ]
+  },
+  "types.show": {
+    "name": "types.show",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\TypeController@show",
+    "uri": "types/{type}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "types.edit": {
+    "name": "types.edit",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\TypeController@edit",
+    "uri": "types/{type}/edit",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "types.update": {
+    "name": "types.update",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\TypeController@update",
+    "uri": "types/{type}",
+    "method": [
+      "PUT",
+      "PATCH"
+    ]
+  },
+  "types.destroy": {
+    "name": "types.destroy",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\TypeController@destroy",
+    "uri": "types/{type}",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "audits.index": {
+    "name": "audits.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\AuditController@index",
+    "uri": "audits",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "audits.create": {
+    "name": "audits.create",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\AuditController@create",
+    "uri": "audits/create",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "audits.store": {
+    "name": "audits.store",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\AuditController@store",
+    "uri": "audits",
+    "method": [
+      "POST"
+    ]
+  },
+  "audits.show": {
+    "name": "audits.show",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\AuditController@show",
+    "uri": "audits/{audit}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "audits.edit": {
+    "name": "audits.edit",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\AuditController@edit",
+    "uri": "audits/{audit}/edit",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "audits.update": {
+    "name": "audits.update",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\AuditController@update",
+    "uri": "audits/{audit}",
+    "method": [
+      "PUT",
+      "PATCH"
+    ]
+  },
+  "audits.destroy": {
+    "name": "audits.destroy",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\AuditController@destroy",
+    "uri": "audits/{audit}",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "models.pieces.index": {
+    "name": "models.pieces.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ModelPieceController@index",
+    "uri": "models/pieces",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "models.pieces.create": {
+    "name": "models.pieces.create",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ModelPieceController@create",
+    "uri": "models/pieces/create",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "models.pieces.store": {
+    "name": "models.pieces.store",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ModelPieceController@store",
+    "uri": "models/pieces",
+    "method": [
+      "POST"
+    ]
+  },
+  "models.pieces.show": {
+    "name": "models.pieces.show",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ModelPieceController@show",
+    "uri": "models/pieces/{piece}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "models.pieces.edit": {
+    "name": "models.pieces.edit",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ModelPieceController@edit",
+    "uri": "models/pieces/{piece}/edit",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "models.pieces.update": {
+    "name": "models.pieces.update",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ModelPieceController@update",
+    "uri": "models/pieces/{piece}",
+    "method": [
+      "PUT",
+      "PATCH"
+    ]
+  },
+  "models.pieces.destroy": {
+    "name": "models.pieces.destroy",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ModelPieceController@destroy",
+    "uri": "models/pieces/{piece}",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "models.materials.index": {
+    "name": "models.materials.index",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ModelMaterialController@index",
+    "uri": "models/materials",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "models.materials.create": {
+    "name": "models.materials.create",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ModelMaterialController@create",
+    "uri": "models/materials/create",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "models.materials.store": {
+    "name": "models.materials.store",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ModelMaterialController@store",
+    "uri": "models/materials",
+    "method": [
+      "POST"
+    ]
+  },
+  "models.materials.show": {
+    "name": "models.materials.show",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ModelMaterialController@show",
+    "uri": "models/materials/{material}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "models.materials.edit": {
+    "name": "models.materials.edit",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ModelMaterialController@edit",
+    "uri": "models/materials/{material}/edit",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "models.materials.update": {
+    "name": "models.materials.update",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ModelMaterialController@update",
+    "uri": "models/materials/{material}",
+    "method": [
+      "PUT",
+      "PATCH"
+    ]
+  },
+  "models.materials.destroy": {
+    "name": "models.materials.destroy",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ModelMaterialController@destroy",
+    "uri": "models/materials/{material}",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "models.pieces.forceUpdate": {
+    "name": "models.pieces.forceUpdate",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\ModelPieceController@forceUpdate",
+    "uri": "models/pieces/update",
+    "method": [
+      "POST"
     ]
   },
   "register": {
@@ -261,15 +1056,6 @@
     "uri": "password",
     "method": [
       "PUT"
-    ]
-  },
-  "logout": {
-    "name": "logout",
-    "domain": null,
-    "action": "App\\Http\\Controllers\\Auth\\AuthenticatedSessionController@destroy",
-    "uri": "logout",
-    "method": [
-      "POST"
     ]
   }
 }

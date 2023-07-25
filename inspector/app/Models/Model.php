@@ -16,6 +16,13 @@ class Model extends AbstractModel
 
     public $keyType = 'string';
 
+    // mutateur permettant de modifier la valeur de has-electro
+    // si egal a 1 alors electrique sinon non éléctrique.
+    public function getHasElectroAttribute($value)
+    {
+        return $value == 1 ? 'électrique' : 'non électrique';
+    }
+
     /**
      * Get the constructor from a model
      * 

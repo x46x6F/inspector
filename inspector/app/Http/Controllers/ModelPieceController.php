@@ -38,7 +38,7 @@ class ModelPieceController extends Controller
      */
     public function store(Request $request)
     {
-        $this->authorize('create', ModelPolicy::class);
+        $this->authorize('create', Model::class);
         /**
          * 0 constructor_id
          * 1 model_id
@@ -49,17 +49,27 @@ class ModelPieceController extends Controller
          * 6 status
          */
 
+        // On vérifie que l'on a bien un fichier
         if ($request->hasFile('file')) {
+            // On déplace le fichier dans le dossier public
             $path = '/files';
             $file = $request->file('file')->getClientOriginalName();
             $request->file('file')->move(public_path($path), $file);
 
+            // On ouvre le fichier en "Lecture seule"
             $csvFile = fopen(base_path("public/files/" . $file), "r");
+            // Boolean qui servira a éviter de lire la première ligne (en-tête du fichier csv)
             $firstline = true;
 
+            // On supprime tout les éléments de la table csv_pieces
             DB::table('csv_pieces')->truncate();
+            
+            // On parcourt le fichier ligne par ligne jusqu'à la fin
             while (($data = fgetcsv($csvFile, 10240, ",")) !== FALSE) {
+
+                // On évite la première ligne
                 if (!$firstline) {
+                    // On insère les éléments dans la table
                     DB::insert(
                         'INSERT INTO csv_pieces(constructor_id, model_id, model_name, type_id, creation_year, has_electro, status) VALUES (:constructor_id, :model_id, :model_name, :type_id, :creation_year, :has_electro, :status)',
                         [
@@ -77,17 +87,23 @@ class ModelPieceController extends Controller
                 $firstline = false;
             }
         }
+        // On vérifie que le fichier existe dans le dossier public
         if (File::exists(public_path('files/' . $file))) {
+            // On supprime le fichier
             File::delete(public_path('files/' . $file));
         }
 
+        // On récupère tout les models de pieces déjà existants
         $modelIds = DB::table('csv_pieces')->pluck('model_id')->toArray();
+        // On compare les models de pièces envoyés avec ceux déjà existant pour voir si il y en a identiques
         $existingPieces = Model::whereIn('id', $modelIds)->count();
-        // dd($existingPieces);
+
         if ($existingPieces > 0) {
+            // Si il y en a identiques, on le renvoie pour le signaler et demander le choix de l'utilisateur
             return $this->index($existingPieces);
         } else {
-            return to_route('models.pieces.index')->with('success', 'Le fichier a été importé avec succés ! Importez le fichier CSV pour les matériels associées pour afficher les pièces.');
+            // Sinon on renvoie un message de succès
+            return to_route('models.pieces.index')->with('success', 'Le fichier a été importé avec succés ! Importez le fichier CSV pour les matériels associés pour afficher les pièces.');
         }
     }
 

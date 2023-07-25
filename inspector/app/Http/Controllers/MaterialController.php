@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Material;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 
 class MaterialController extends Controller
@@ -63,5 +64,15 @@ class MaterialController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function test(){
+        DB::table('materials')->insert([
+            'name' => "Test",
+            'creation_year' => 2002,
+            'status' => 0,
+            'model_id' => "A530",
+            'site_id' => 52
+        ]);
     }
 }

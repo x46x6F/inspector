@@ -82,6 +82,7 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::post('models/pieces/update', [ModelPieceController::class, 'forceUpdate'])->name('models.pieces.forceUpdate');
+    Route::post('materials/test', [MaterialController::class, 'test'])->name('materials.test');
 });
 
 require __DIR__ . '/auth.php';

@@ -87,9 +87,9 @@ class ModelMaterialController extends Controller
         if ($existingMaterials > 0) {
             return $this->index($existingMaterials);
         } else {
-            DB::insert('INSERT INTO models(id, name, creation_year, has_electro, status, constructor_id, type_id) (SELECT model_id as id, model_name as name, creation_year, has_electro, status, constructor_id, type_id FROM csv_pieces WHERE model_id NOT IN (SELECT id FROM models))');
+            DB::insert('INSERT INTO models(id, name, creation_year, has_electro, status, constructor_id, type_id) (SELECT model_id as id, model_name as name, creation_year, has_electro, status, constructor_id, type_id FROM csv_materials WHERE model_id NOT IN (SELECT id FROM models))');
             $materials = DB::table('csv_materials')->get()->toArray();
-            
+
             DB::insert('INSERT INTO models(id, name, creation_year, has_electro, status, constructor_id, type_id) (SELECT model_id as id, model_name as name, creation_year, has_electro, status, constructor_id, type_id FROM csv_pieces WHERE model_id NOT IN (SELECT id FROM models))');
 
             foreach ($materials as $material) {

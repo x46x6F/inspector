@@ -59,6 +59,8 @@ const sendFile = e => {
 const closeError = () => {
   showModal.value = false
 }
+
+const test = () => router.post(route('materials.test'))
 </script>
 
 <template>
@@ -67,7 +69,7 @@ const closeError = () => {
   <Layout>
 
     <h1>Référentiel Pièces</h1>
-
+<!-- <button @click="test">Clique</button> -->
     <OptionBar>
       <UploadButton v-if="page.props.auth?.user.canImportData" @change="sendFile" />
       <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert" v-if="$page.props.flash.success">

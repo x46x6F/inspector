@@ -1,0 +1,227 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: 1nspect0r API Routes
+  description: Illustration de toutes les routes API
+tags:
+  - name: Auth
+    description: Routes pour l'authentification
+  - name: Audits
+    description: Routes pour les audits
+
+paths:
+  /api/audits:
+    get:
+      tags:
+        - "Audits"
+      summary: Récupérer toutes les audits de la BDD
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/auditIndex"
+  /api/audits/{campaign}/{piece?}:
+    get:
+      tags:
+        - "Audits"
+      summary: Récupérer un audit 
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/auditShow"
+  /api/audits/{campaign}/{piece}:
+    patch:
+      tags:
+        - "Audits"
+      summary: Modifie un audit
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/auditUpdate"
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/auditShow"
+  /api/login:
+    post:
+      tags:
+        - "Auth"
+      summary: Crée une session
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/login"
+      responses:
+        200:
+          description: OK
+  /api/logout:
+    post:
+      tags:
+        - "Auth"
+      summary: Supprime la session en cours
+      responses:
+        200:
+          description: OK
+  
+
+definitions:
+  auditIndex:
+    type: array
+    items:
+      type: object
+      properties:
+        campaign_id:
+          type: integer
+        piece_id:
+          type: integer
+        audit:
+          type: boolean
+        presence:
+          type: boolean
+        functional:
+          type: boolean
+        month:
+          type: integer
+        usury:
+          type: boolean
+        change:
+          type: boolean
+        complement:
+          type: boolean
+        recommended:
+          type: boolean
+        piece:
+          type: object
+          properties:
+            id:
+              type: integer
+            material_id:
+              type: integer
+            model_id:
+              type: string
+            created_year:
+              type: integer
+            status:
+              type: boolean
+        campaign:
+          type: object
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            status:
+              type: string
+            start_date:
+              type: string
+              format: date
+            end_date:
+              type: string
+              format: date
+            creator_id:
+              type: integer
+            auditor_id:
+              type: integer
+            site_id:
+              type: integer
+  auditShow:
+    type: object
+    properties:
+      campaign_id:
+        type: integer
+      piece_id:
+        type: integer
+      audit:
+        type: boolean
+      presence:
+        type: boolean
+      functional:
+        type: boolean
+      month:
+        type: integer
+      usury:
+        type: boolean
+      change:
+        type: boolean
+      complement:
+        type: boolean
+      recommended:
+        type: boolean
+      piece:
+        type: object
+        properties:
+          id:
+            type: integer
+          material_id:
+            type: integer
+          model_id:
+            type: string
+          created_year:
+            type: integer
+          status:
+            type: boolean
+      campaign:
+        type: object
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+          status:
+            type: string
+          start_date:
+            type: string
+            format: date
+          end_date:
+            type: string
+            format: date
+          creator_id:
+            type: integer
+          auditor_id:
+            type: integer
+          site_id:
+            type: integer
+  auditUpdate:
+    type: object
+    properties:
+      campaign_id:
+        type: integer
+      piece_id:
+        type: integer
+      audit:
+        type: boolean
+      presence:
+        type: boolean
+      functional:
+        type: boolean
+      month:
+        type: integer
+      usury:
+        type: boolean
+      change:
+        type: boolean
+      complement:
+        type: boolean
+      recommended:
+        type: boolean
+  login:
+    type: object
+    properties:
+      email:
+        type: string
+      password: 
+        type: string
+      remember: 
+        type: boolean
